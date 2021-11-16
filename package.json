@@ -1,0 +1,19 @@
+{
+    "name": "charts_helper",
+    "version": "1.0.0",
+    "description": "Chart's helper for both Chart-IQ and Trading View",
+    "main": "index.js",
+    "scripts": {
+        "transpile": "tsc",
+        "docs": "npx typedoc"
+    },
+    "keywords": [],
+    "author": "vigneshwaran.j",
+    "license": "ISC",
+    "devDependencies": {
+        "typedoc": "^0.22.9"
+    },
+    "dependencies": {
+        "typescript": "^4.4.4"
+    }
+}

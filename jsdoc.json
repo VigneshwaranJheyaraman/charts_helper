@@ -1,0 +1,17 @@
+{
+    "source": {
+        "include": ["dist"],
+        "includePattern": "\\.ts$",
+        "excludePattern": "(node_modules/|docs)"
+    },
+    "plugins": ["better-docs/component", "better-docs/category", "better-docs/typescript", "plugins/markdown"],
+    "templates": {
+        "cleverLinks": true,
+        "monospaceLinks": true
+    },
+    "opts": {
+        "recurse": true,
+        "destination": "./docs/",
+        "template": "./node_modules/better-docs"
+    }
+}

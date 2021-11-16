@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+      "target": "ES2015",
+      "module": "commonjs",
+      "strict": true,
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "removeComments": false,      
+      "forceConsistentCasingInFileNames": true,
+      "declaration": true,
+      "outDir": "./dist",
+      "sourceMap": false,
+      "allowUnreachableCode": false,
+      "alwaysStrict": true,
+      "allowUnusedLabels": false
+    },
+    "typedocOptions":{
+      "entryPoints": ["src/index.ts"],
+      "out":"docs"
+    },
+    "exclude": ["node_modules"],
+    "include": ["src/**/*"],
+    "$schema": "https://json.schemastore.org/tsconfig",
+    "display": "Recommended"
+  }
