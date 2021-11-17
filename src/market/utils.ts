@@ -1,13 +1,28 @@
 import MarketManager from "./marketManager";
 import MarketRule from "./rules";
-
+/**
+ * ValidRule which is returned after checking the rule
+ * @interface
+ * @property {MarketRule} [rule] - optional rule, which is a valid market rule 
+ * @property {boolean} isValid - return true if a rule exists
+ */
 interface ValidRule{
     rule?:MarketRule,
     isValid:boolean
 };
-
+/**
+ * Market Session Time
+ * @interface
+ * @property {number} hr - market hour
+ * @property {number} min - market minute
+ */
 export interface SessionTime{hr:number, min:number};
-
+/**
+ * Function to check if the date provided is a week day
+ * @param {Date} dateToCheck - date to check
+ * @param {Array<MarketRule>} rules - list of active market rules
+ * @returns {ValidRule}
+ */
 export function checkIfWeekDay(dateToCheck:Date, rules:Array<MarketRule>):ValidRule{
     dateToCheck = new Date(dateToCheck);
     let filteredWeekDayRule:Array<MarketRule> = rules
@@ -24,7 +39,13 @@ export function checkIfWeekDay(dateToCheck:Date, rules:Array<MarketRule>):ValidR
         }
     );
 }
-
+/**
+ * Function to check if the date provided is a holiday
+ * @param {Date} dateToCheck - date to check
+ * @param {Array<MarketRule>} rules - list of active market rules
+ * @param {boolean} [checkForSession=false] - consider the holiday session as well optional
+ * @returns {ValidRule}
+ */
 export function checkIfHoliday(dateToCheck:Date, rules:Array<MarketRule>, checkForSession:boolean=false):ValidRule{
     dateToCheck = new Date(dateToCheck);
     let filteredHolidayRule:Array<MarketRule> = rules
@@ -43,7 +64,12 @@ export function checkIfHoliday(dateToCheck:Date, rules:Array<MarketRule>, checkF
         }
     );
 }
-
+/**
+ * Return a valid rule based on the date selected
+ * @param {Date} dateToCheck - date to check
+ * @param {Array<MarketRule>} rules - list of active market rules
+ * @returns {MarketRule}
+ */
 export function getCurrentDateRule(dateToCheck:Date, rules:Array<MarketRule>): MarketRule{
     dateToCheck = new Date(dateToCheck);
     let isHoliday:ValidRule = checkIfHoliday(dateToCheck, rules);
@@ -64,18 +90,31 @@ export function getCurrentDateRule(dateToCheck:Date, rules:Array<MarketRule>): M
         }
     }
 }
-
+/**
+ * Extract hr and min from string provide on market rule
+ * @param {string} hrMin - HH:MM format time
+ * @returns {SessionTime}
+ */
 export function extractHourMinFromRule(hrMin:string): SessionTime{
     let [hr, min] = hrMin.split(":").map(v => parseInt(v, 10));
     return {
         hr,min
     };
 }
-
+/**
+ * Returns the previous day from provided day
+ * @param {Date} date - date to go back
+ * @returns {Date}
+ */
 export function goBackPreviousDay(date:Date):Date{
     return new Date(date.getTime() - (1e3* 60 * 60* 24));
 }
-
+/**
+ * Convert the date object within active market hour
+ * @param {MarketManager} this - the this keyword binded to the function
+ * @param {Date} date - date to convert within market hour
+ * @returns {Date}
+ */
 export function convertToMarketHour(this:MarketManager, date:Date): Date{
     date = new Date(date);
     if(this.isMarketOpen(date)){

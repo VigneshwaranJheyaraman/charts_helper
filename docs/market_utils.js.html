@@ -1,0 +1,254 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> market/utils.js</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="AbstractCompose.html">AbstractCompose</a></li><li><a href="ApiRequestor.html">ApiRequestor</a></li><li><a href="BroadcastHandler.html">BroadcastHandler</a></li><li><a href="ChartDataManager.html">ChartDataManager</a></li><li><a href="ChartSymbol.html">ChartSymbol</a></li><li><a href="MarketManager.html">MarketManager</a></li><li><a href="module.exports.html">exports</a></li><li><a href="Publisher.html">Publisher</a></li><li><a href="Queue.html">Queue</a></li><li><a href="RangeManager.html">RangeManager</a></li><li><a href="Subscriber.html">Subscriber</a></li><li><a href="Subscription.html">Subscription</a></li></ul><h3>Interfaces</h3><ul><li><a href="ApiRequestorProps.html">ApiRequestorProps</a></li><li><a href="BroadcastCandle.html">BroadcastCandle</a></li><li><a href="BroadcastQueue.html">BroadcastQueue</a></li><li><a href="Candle.html">Candle</a></li><li><a href="ChartSymbolProps.html">ChartSymbolProps</a></li><li><a href="DataManagerProps.html">DataManagerProps</a></li><li><a href="IApiRequestor.html">IApiRequestor</a></li><li><a href="IBroadcastHandler.html">IBroadcastHandler</a></li><li><a href="IChartDataManager.html">IChartDataManager</a></li><li><a href="IMarketManager.html">IMarketManager</a></li><li><a href="MarketManageProps.html">MarketManageProps</a></li><li><a href="MarketRule.html">MarketRule</a></li><li><a href="Range.html">Range</a></li><li><a href="RangeManagerProps.html">RangeManagerProps</a></li><li><a href="SessionTime.html">SessionTime</a></li><li><a href="ValidRule.html">ValidRule</a></li></ul><h3>Global</h3><ul><li><a href="global.html#__subscription;">__subscription;</a></li><li><a href="global.html#allPublisherSubscribers">allPublisherSubscribers</a></li><li><a href="global.html#apiHandler">apiHandler</a></li><li><a href="global.html#broadcastCandle">broadcastCandle</a></li><li><a href="global.html#broadcastHandler">broadcastHandler</a></li><li><a href="global.html#checkEverySecond">checkEverySecond</a></li><li><a href="global.html#checkIfHoliday">checkIfHoliday</a></li><li><a href="global.html#checkIfWeekDay">checkIfWeekDay</a></li><li><a href="global.html#checkIsDailyTicks">checkIsDailyTicks</a></li><li><a href="global.html#convertToMarketHour">convertToMarketHour</a></li><li><a href="global.html#EMPTY_CANDLE">EMPTY_CANDLE</a></li><li><a href="global.html#extractHourMinFromRule">extractHourMinFromRule</a></li><li><a href="global.html#findLastCandleTime">findLastCandleTime</a></li><li><a href="global.html#getCurrentDateRule">getCurrentDateRule</a></li><li><a href="global.html#getSubscribersList">getSubscribersList</a></li><li><a href="global.html#goBackPreviousDay">goBackPreviousDay</a></li><li><a href="global.html#isHoliday">isHoliday</a></li><li><a href="global.html#isStreaming">isStreaming</a></li><li><a href="global.html#isWeekDay">isWeekDay</a></li><li><a href="global.html">MarketSubscriptionToken</a></li><li><a href="global.html#normalizeMinutes">normalizeMinutes</a></li><li><a href="global.html">RangeChangeToken</a></li><li><a href="global.html#rangeSize">rangeSize</a></li><li><a href="global.html#requestCount">requestCount</a></li><li><a href="global.html#rules">rules</a></li><li><a href="global.html#subscribe">subscribe</a></li><li><a href="global.html">SubscriptionTopic</a></li><li><a href="global.html#symbol">symbol</a></li><li><a href="global.html">tickerDelimator</a></li><li><a href="global.html#topic">topic</a></li><li><a href="global.html#unsubscribe">unsubscribe</a></li><li><a href="global.html#url">url</a></li><li><a href="global.html#%257B@template">{@template</a></li><li><a href="global.html#%257B@template%257D">{@template}</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>market/utils.js</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.convertToMarketHour = exports.goBackPreviousDay = exports.extractHourMinFromRule = exports.getCurrentDateRule = exports.checkIfHoliday = exports.checkIfWeekDay = void 0;
+;
+;
+/**
+ * Function to check if the date provided is a week day
+ * @param {Date} dateToCheck - date to check
+ * @param {Array&lt;MarketRule>} rules - list of active market rules
+ * @returns {ValidRule}
+ */
+function checkIfWeekDay(dateToCheck, rules) {
+    dateToCheck = new Date(dateToCheck);
+    let filteredWeekDayRule = rules
+        .filter((rule) => {
+        return (rule.dayOfWeek &amp;&amp; rule.open &amp;&amp; rule.close);
+    }).filter((rule) => {
+        return (rule.dayOfWeek === dateToCheck.getDay());
+    }), isValid = filteredWeekDayRule.length !== 0;
+    return ({
+        isValid,
+        rule: isValid ? filteredWeekDayRule[0] : undefined
+    });
+}
+exports.checkIfWeekDay = checkIfWeekDay;
+/**
+ * Function to check if the date provided is a holiday
+ * @param {Date} dateToCheck - date to check
+ * @param {Array&lt;MarketRule>} rules - list of active market rules
+ * @param {boolean} [checkForSession=false] - consider the holiday session as well optional
+ * @returns {ValidRule}
+ */
+function checkIfHoliday(dateToCheck, rules, checkForSession = false) {
+    dateToCheck = new Date(dateToCheck);
+    let filteredHolidayRule = rules
+        .filter((rule) => rule.date &amp;&amp; rule.name)
+        .filter((rule) => {
+        var _a;
+        return (new Date((_a = rule.date) !== null &amp;&amp; _a !== void 0 ? _a : '').toDateString() === dateToCheck.toDateString());
+    })
+        .filter((rule) => {
+        return checkForSession ? true : (!rule.open &amp;&amp; !rule.close);
+    }), isValid = filteredHolidayRule.length !== 0;
+    return ({
+        isValid,
+        rule: isValid ? filteredHolidayRule[0] : undefined
+    });
+}
+exports.checkIfHoliday = checkIfHoliday;
+/**
+ * Return a valid rule based on the date selected
+ * @param {Date} dateToCheck - date to check
+ * @param {Array&lt;MarketRule>} rules - list of active market rules
+ * @returns {MarketRule}
+ */
+function getCurrentDateRule(dateToCheck, rules) {
+    dateToCheck = new Date(dateToCheck);
+    let isHoliday = checkIfHoliday(dateToCheck, rules);
+    if (isHoliday.isValid &amp;&amp; isHoliday.rule) {
+        return isHoliday.rule;
+    }
+    else {
+        let isHolidayWithSession = checkIfHoliday(dateToCheck, rules, true);
+        if (isHolidayWithSession.isValid &amp;&amp; isHolidayWithSession.rule) {
+            return isHolidayWithSession.rule;
+        }
+        else {
+            let isWeekDay = checkIfWeekDay(dateToCheck, rules);
+            if (isWeekDay.isValid &amp;&amp; isWeekDay.rule) {
+                return isWeekDay.rule;
+            }
+            else {
+                return rules[0];
+            }
+        }
+    }
+}
+exports.getCurrentDateRule = getCurrentDateRule;
+/**
+ * Extract hr and min from string provide on market rule
+ * @param {string} hrMin - HH:MM format time
+ * @returns {SessionTime}
+ */
+function extractHourMinFromRule(hrMin) {
+    let [hr, min] = hrMin.split(":").map(v => parseInt(v, 10));
+    return {
+        hr, min
+    };
+}
+exports.extractHourMinFromRule = extractHourMinFromRule;
+/**
+ * Returns the previous day from provided day
+ * @param {Date} date - date to go back
+ * @returns {Date}
+ */
+function goBackPreviousDay(date) {
+    return new Date(date.getTime() - (1e3 * 60 * 60 * 24));
+}
+exports.goBackPreviousDay = goBackPreviousDay;
+/**
+ * Convert the date object within active market hour
+ * @param {MarketManager} this - the this keyword binded to the function
+ * @param {Date} date - date to convert within market hour
+ * @returns {Date}
+ */
+function convertToMarketHour(date) {
+    date = new Date(date);
+    if (this.isMarketOpen(date)) {
+        return date;
+    }
+    else {
+        let defaultRule = this.rules[0], currentRule = getCurrentDateRule(date, this.rules), [currentMin, currentHr] = [date.getMinutes(), date.getHours()];
+        if (currentRule.open &amp;&amp; currentRule.close) {
+            let openHrMin = extractHourMinFromRule(currentRule.open), closeHrMin = extractHourMinFromRule(currentRule.close);
+            if (currentHr &lt; openHrMin.hr || (currentHr === openHrMin.hr &amp;&amp; currentMin &lt; openHrMin.min)) {
+                date.setHours(closeHrMin.hr, closeHrMin.min - 1, 0, 0);
+                return convertToMarketHour.call(this, goBackPreviousDay(date));
+            }
+            else if (currentHr > closeHrMin.hr || (currentHr === closeHrMin.hr &amp;&amp; currentMin >= closeHrMin.min)) {
+                date.setHours(closeHrMin.hr, closeHrMin.min, 0, 0);
+            }
+        }
+        else {
+            if (defaultRule.open &amp;&amp; defaultRule.close) {
+                let defaultOpenHrMin = extractHourMinFromRule(defaultRule.open), defaultCloseHrMin = extractHourMinFromRule(defaultRule.close);
+                if (currentHr &lt; defaultOpenHrMin.hr || (currentHr === defaultOpenHrMin.hr &amp;&amp; currentMin &lt; defaultOpenHrMin.min)) {
+                    date.setHours(defaultCloseHrMin.hr, defaultCloseHrMin.min - 1, 0, 0);
+                    return convertToMarketHour.call(this, goBackPreviousDay(date));
+                }
+                else if (currentHr > defaultCloseHrMin.hr || (currentHr === defaultCloseHrMin.hr &amp;&amp; currentMin >= defaultCloseHrMin.min)) {
+                    date.setHours(defaultCloseHrMin.hr, defaultCloseHrMin.min, 0, 0);
+                }
+            }
+        }
+    }
+    return new Date(date);
+}
+exports.convertToMarketHour = convertToMarketHour;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+</body>
+</html>

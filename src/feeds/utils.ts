@@ -1,7 +1,12 @@
 import MarketManager from "../market/marketManager";
 import { convertToMarketHour } from "../market/utils";
-
-export function checkEverySecond(callback:() => void, checkCondition:boolean, timeOutMs:number=1e3):void{
+/**
+ * Wait for a function to call and try checking for every interval
+ * @param {Function} callback - The function which will be called when the condition is satisfied
+ * @param {boolean} checkCondition - The condition to check frequently until it is satisfied
+ * @param {number} [timeOutMs=1000] - The optional value which will specify the time to call the function 
+ */
+export function checkEverySecond(callback:(() => void), checkCondition:boolean, timeOutMs:number=1e3):void{
     let timeOut:number = setTimeout(() => {
         if(checkCondition){
             callback();
@@ -11,7 +16,16 @@ export function checkEverySecond(callback:() => void, checkCondition:boolean, ti
         }
     }, timeOutMs);
 }
-
+/**
+ * JSON structure of A regular candle plotted on chart
+ * @interface
+ * @property {Date|null} date - Date of candle
+ * @property {number} open - Open value of the candle
+ * @property {number} close - Price/ Close value of the candle
+ * @property {number} low - Low value of the candle
+ * @property {number} high - High value of the candle
+ * @property {number} [volume] - Optional Volume value of the candle
+ */
 export interface Candle{
     date:Date|null,
     open:number,
@@ -20,12 +34,21 @@ export interface Candle{
     high:number,
     volume?:number
 };
-
+/**
+ * Checks if the provided resolution is Daily candles like (Day, Week or Month) else minute candles like (1,2,3 min etc.,)
+ * @param {string} resolution - the resolution to check
+ * @returns {boolean}
+ */
 export function checkIsDailyTicks(resolution:string):boolean{
     return /[DWM]/.test(resolution);
 }
-
-export function normalizeMinutes(date:Date, resolution:string){
+/**
+ * Function will convert the date to the nearby candle time based on resolution
+ * @param {Date} date - date to convert
+ * @param {string} resolution - resolution to check
+ * @returns {Date}
+ */
+export function normalizeMinutes(date:Date, resolution:string):Date{
     date = new Date(date);
     if(checkIsDailyTicks(resolution)){
         return new Date(date.setHours(5,30,0,0));
@@ -39,7 +62,14 @@ export function normalizeMinutes(date:Date, resolution:string){
         return new Date(date);
     }
 }
-
+/**
+ * Determines the last candle to be plotted on chart based on the last plotted candle
+ * @param {Date} lastCandleTime - last plotted candle's time
+ * @param {Date} broadCastCandleTime - the broadcast candle's time
+ * @param {string} resolution - active resolution on chart
+ * @param {MarketManager} marketManager - market manager 
+ * @returns {Date}
+ */
 export function findLastCandleTime(lastCandleTime:Date, broadCastCandleTime:Date, resolution:string, marketManager:MarketManager):Date{
     broadCastCandleTime = new Date(broadCastCandleTime);
     lastCandleTime = new Date(lastCandleTime);

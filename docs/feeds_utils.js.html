@@ -1,0 +1,204 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> feeds/utils.js</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="AbstractCompose.html">AbstractCompose</a></li><li><a href="ApiRequestor.html">ApiRequestor</a></li><li><a href="BroadcastHandler.html">BroadcastHandler</a></li><li><a href="ChartDataManager.html">ChartDataManager</a></li><li><a href="ChartSymbol.html">ChartSymbol</a></li><li><a href="MarketManager.html">MarketManager</a></li><li><a href="module.exports.html">exports</a></li><li><a href="Publisher.html">Publisher</a></li><li><a href="Queue.html">Queue</a></li><li><a href="RangeManager.html">RangeManager</a></li><li><a href="Subscriber.html">Subscriber</a></li><li><a href="Subscription.html">Subscription</a></li></ul><h3>Interfaces</h3><ul><li><a href="ApiRequestorProps.html">ApiRequestorProps</a></li><li><a href="BroadcastCandle.html">BroadcastCandle</a></li><li><a href="BroadcastQueue.html">BroadcastQueue</a></li><li><a href="Candle.html">Candle</a></li><li><a href="ChartSymbolProps.html">ChartSymbolProps</a></li><li><a href="DataManagerProps.html">DataManagerProps</a></li><li><a href="IApiRequestor.html">IApiRequestor</a></li><li><a href="IBroadcastHandler.html">IBroadcastHandler</a></li><li><a href="IChartDataManager.html">IChartDataManager</a></li><li><a href="IMarketManager.html">IMarketManager</a></li><li><a href="MarketManageProps.html">MarketManageProps</a></li><li><a href="MarketRule.html">MarketRule</a></li><li><a href="Range.html">Range</a></li><li><a href="RangeManagerProps.html">RangeManagerProps</a></li><li><a href="SessionTime.html">SessionTime</a></li><li><a href="ValidRule.html">ValidRule</a></li></ul><h3>Global</h3><ul><li><a href="global.html#__subscription;">__subscription;</a></li><li><a href="global.html#allPublisherSubscribers">allPublisherSubscribers</a></li><li><a href="global.html#apiHandler">apiHandler</a></li><li><a href="global.html#broadcastCandle">broadcastCandle</a></li><li><a href="global.html#broadcastHandler">broadcastHandler</a></li><li><a href="global.html#checkEverySecond">checkEverySecond</a></li><li><a href="global.html#checkIfHoliday">checkIfHoliday</a></li><li><a href="global.html#checkIfWeekDay">checkIfWeekDay</a></li><li><a href="global.html#checkIsDailyTicks">checkIsDailyTicks</a></li><li><a href="global.html#convertToMarketHour">convertToMarketHour</a></li><li><a href="global.html#EMPTY_CANDLE">EMPTY_CANDLE</a></li><li><a href="global.html#extractHourMinFromRule">extractHourMinFromRule</a></li><li><a href="global.html#findLastCandleTime">findLastCandleTime</a></li><li><a href="global.html#getCurrentDateRule">getCurrentDateRule</a></li><li><a href="global.html#getSubscribersList">getSubscribersList</a></li><li><a href="global.html#goBackPreviousDay">goBackPreviousDay</a></li><li><a href="global.html#isHoliday">isHoliday</a></li><li><a href="global.html#isStreaming">isStreaming</a></li><li><a href="global.html#isWeekDay">isWeekDay</a></li><li><a href="global.html">MarketSubscriptionToken</a></li><li><a href="global.html#normalizeMinutes">normalizeMinutes</a></li><li><a href="global.html">RangeChangeToken</a></li><li><a href="global.html#rangeSize">rangeSize</a></li><li><a href="global.html#requestCount">requestCount</a></li><li><a href="global.html#rules">rules</a></li><li><a href="global.html#subscribe">subscribe</a></li><li><a href="global.html">SubscriptionTopic</a></li><li><a href="global.html#symbol">symbol</a></li><li><a href="global.html">tickerDelimator</a></li><li><a href="global.html#topic">topic</a></li><li><a href="global.html#unsubscribe">unsubscribe</a></li><li><a href="global.html#url">url</a></li><li><a href="global.html#%257B@template">{@template</a></li><li><a href="global.html#%257B@template%257D">{@template}</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>feeds/utils.js</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.findLastCandleTime = exports.normalizeMinutes = exports.checkIsDailyTicks = exports.checkEverySecond = void 0;
+const utils_1 = require("../market/utils");
+/**
+ * Wait for a function to call and try checking for every interval
+ * @param {(()=>void)} callback - The function which will be called when the condition is satisfied
+ * @param {boolean} checkCondition - The condition to check frequently until it is satisfied
+ * @param {number} [timeOutMs=1000] - The optional value which will specify the time to call the function
+ */
+function checkEverySecond(callback, checkCondition, timeOutMs = 1e3) {
+    let timeOut = setTimeout(() => {
+        if (checkCondition) {
+            callback();
+        }
+        else {
+            checkEverySecond(callback, checkCondition, timeOutMs);
+            clearTimeout(timeOut);
+        }
+    }, timeOutMs);
+}
+exports.checkEverySecond = checkEverySecond;
+;
+/**
+ * Checks if the provided resolution is Daily candles like (Day, Week or Month) else minute candles like (1,2,3 min etc.,)
+ * @param {string} resolution - the resolution to check
+ * @returns {boolean}
+ */
+function checkIsDailyTicks(resolution) {
+    return /[DWM]/.test(resolution);
+}
+exports.checkIsDailyTicks = checkIsDailyTicks;
+/**
+ * Function will convert the date to the nearby candle time based on resolution
+ * @param {Date} date - date to convert
+ * @param {string} resolution - resolution to check
+ * @returns {Date}
+ */
+function normalizeMinutes(date, resolution) {
+    date = new Date(date);
+    if (checkIsDailyTicks(resolution)) {
+        return new Date(date.setHours(5, 30, 0, 0));
+    }
+    else {
+        let res = parseInt(resolution, 10);
+        if (date.getMinutes() % res === 0) {
+            date.setSeconds(0, 0);
+        }
+        else {
+            date.setMinutes(Math.floor(date.getMinutes() / res) * res, 0, 0);
+        }
+        return new Date(date);
+    }
+}
+exports.normalizeMinutes = normalizeMinutes;
+/**
+ * Determines the last candle to be plotted on chart based on the last plotted candle
+ * @param {Date} lastCandleTime - last plotted candle's time
+ * @param {Date} broadCastCandleTime - the broadcast candle's time
+ * @param {string} resolution - active resolution on chart
+ * @param {MarketManager} marketManager - market manager
+ * @returns {Date}
+ */
+function findLastCandleTime(lastCandleTime, broadCastCandleTime, resolution, marketManager) {
+    broadCastCandleTime = new Date(broadCastCandleTime);
+    lastCandleTime = new Date(lastCandleTime);
+    let normalizedTime = normalizeMinutes(broadCastCandleTime, resolution);
+    if (checkIsDailyTicks(resolution)) {
+        return new Date(lastCandleTime.setHours(5, 30, 0, 0));
+    }
+    else {
+        if (broadCastCandleTime.toDateString() === lastCandleTime.toDateString()) {
+            let res = parseInt(resolution, 10), resolutionInMilliSecond = (res * 1e3 * 60), timeDifferenceBetweenLastCandleAndBroadcastCandle = broadCastCandleTime.getTime() - lastCandleTime.getTime(), candlesDifferenceBetweenLastCandleAndBroadcastCandle = Math.floor(timeDifferenceBetweenLastCandleAndBroadcastCandle / resolutionInMilliSecond), nextCandleTime = new Date(lastCandleTime.getTime() + resolutionInMilliSecond), newLastCandleTime = new Date(nextCandleTime);
+            if (candlesDifferenceBetweenLastCandleAndBroadcastCandle > 1) {
+                nextCandleTime = new Date(lastCandleTime.getTime() + (resolutionInMilliSecond * candlesDifferenceBetweenLastCandleAndBroadcastCandle));
+            }
+            newLastCandleTime = new Date((broadCastCandleTime.getTime() >= lastCandleTime.getTime()) ? nextCandleTime : lastCandleTime);
+            if (marketManager.isMarketOpen(newLastCandleTime)) {
+                return newLastCandleTime;
+            }
+            else {
+                return utils_1.convertToMarketHour.call(marketManager, newLastCandleTime);
+            }
+        }
+        return normalizedTime;
+    }
+}
+exports.findLastCandleTime = findLastCandleTime;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+</body>
+</html>

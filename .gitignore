@@ -3,5 +3,4 @@ dev
 package-lock.json
 .env
 dist
-docs
 node_modules

@@ -1,0 +1,269 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> market/marketManager.js</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="AbstractCompose.html">AbstractCompose</a></li><li><a href="ApiRequestor.html">ApiRequestor</a></li><li><a href="BroadcastHandler.html">BroadcastHandler</a></li><li><a href="ChartDataManager.html">ChartDataManager</a></li><li><a href="ChartSymbol.html">ChartSymbol</a></li><li><a href="MarketManager.html">MarketManager</a></li><li><a href="module.exports.html">exports</a></li><li><a href="Publisher.html">Publisher</a></li><li><a href="Queue.html">Queue</a></li><li><a href="RangeManager.html">RangeManager</a></li><li><a href="Subscriber.html">Subscriber</a></li><li><a href="Subscription.html">Subscription</a></li></ul><h3>Interfaces</h3><ul><li><a href="ApiRequestorProps.html">ApiRequestorProps</a></li><li><a href="BroadcastCandle.html">BroadcastCandle</a></li><li><a href="BroadcastQueue.html">BroadcastQueue</a></li><li><a href="Candle.html">Candle</a></li><li><a href="ChartSymbolProps.html">ChartSymbolProps</a></li><li><a href="DataManagerProps.html">DataManagerProps</a></li><li><a href="IApiRequestor.html">IApiRequestor</a></li><li><a href="IBroadcastHandler.html">IBroadcastHandler</a></li><li><a href="IChartDataManager.html">IChartDataManager</a></li><li><a href="IMarketManager.html">IMarketManager</a></li><li><a href="MarketManageProps.html">MarketManageProps</a></li><li><a href="MarketRule.html">MarketRule</a></li><li><a href="Range.html">Range</a></li><li><a href="RangeManagerProps.html">RangeManagerProps</a></li><li><a href="SessionTime.html">SessionTime</a></li><li><a href="ValidRule.html">ValidRule</a></li></ul><h3>Global</h3><ul><li><a href="global.html#__subscription;">__subscription;</a></li><li><a href="global.html#allPublisherSubscribers">allPublisherSubscribers</a></li><li><a href="global.html#apiHandler">apiHandler</a></li><li><a href="global.html#broadcastCandle">broadcastCandle</a></li><li><a href="global.html#broadcastHandler">broadcastHandler</a></li><li><a href="global.html#checkEverySecond">checkEverySecond</a></li><li><a href="global.html#checkIfHoliday">checkIfHoliday</a></li><li><a href="global.html#checkIfWeekDay">checkIfWeekDay</a></li><li><a href="global.html#checkIsDailyTicks">checkIsDailyTicks</a></li><li><a href="global.html#convertToMarketHour">convertToMarketHour</a></li><li><a href="global.html#EMPTY_CANDLE">EMPTY_CANDLE</a></li><li><a href="global.html#extractHourMinFromRule">extractHourMinFromRule</a></li><li><a href="global.html#findLastCandleTime">findLastCandleTime</a></li><li><a href="global.html#getCurrentDateRule">getCurrentDateRule</a></li><li><a href="global.html#getSubscribersList">getSubscribersList</a></li><li><a href="global.html#goBackPreviousDay">goBackPreviousDay</a></li><li><a href="global.html#isHoliday">isHoliday</a></li><li><a href="global.html#isStreaming">isStreaming</a></li><li><a href="global.html#isWeekDay">isWeekDay</a></li><li><a href="global.html">MarketSubscriptionToken</a></li><li><a href="global.html#normalizeMinutes">normalizeMinutes</a></li><li><a href="global.html">RangeChangeToken</a></li><li><a href="global.html#rangeSize">rangeSize</a></li><li><a href="global.html#requestCount">requestCount</a></li><li><a href="global.html#rules">rules</a></li><li><a href="global.html#subscribe">subscribe</a></li><li><a href="global.html">SubscriptionTopic</a></li><li><a href="global.html#symbol">symbol</a></li><li><a href="global.html">tickerDelimator</a></li><li><a href="global.html#topic">topic</a></li><li><a href="global.html#unsubscribe">unsubscribe</a></li><li><a href="global.html#url">url</a></li><li><a href="global.html#%257B@template">{@template</a></li><li><a href="global.html#%257B@template%257D">{@template}</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>market/marketManager.js</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>"use strict";
+var __importDefault = (this &amp;&amp; this.__importDefault) || function (mod) {
+    return (mod &amp;&amp; mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const utils_1 = require("../feeds/utils");
+const publisher_1 = __importDefault(require("../pubsub/publisher"));
+const symbol_1 = __importDefault(require("../symbol/symbol"));
+const abstract_composer_1 = __importDefault(require("../utils/abstract-composer"));
+const utils_2 = require("./utils");
+;
+/**
+ * MarketManger which handles market and session management
+ * @class
+ * @extends AbstractCompose&lt;MarketManageProps>
+ * @implements {IMarketManager}
+ */
+class MarketManager extends abstract_composer_1.default {
+    /**
+     * Returns a MarketManager instance
+     * @param {MarketManagerProps} props - constructor properties
+     */
+    constructor(props) {
+        super(props);
+        /**
+         * The active symbol on chart
+         * @private
+         * @member {ChartSymbol} __activeSymbol
+         */
+        this.__activeSymbol = null;
+        /**
+         * The Publisher object which will publish changes to its subscribers
+         * @private
+         * @member {Publisher} __publisher
+         */
+        this.__publisher = new publisher_1.default(MarketManager.MarketSubscriptionToken);
+        let symbolSubscription = this.__subscription.subscribe(symbol_1.default.SubscriptionTopic, (changeEvent) => {
+            if (changeEvent.data) {
+                this.__activeSymbol = changeEvent.data;
+            }
+        });
+        window.addEventListener('beforeunload', () => {
+            this.__subscription.unsubscribe(symbol_1.default.SubscriptionTopic, symbolSubscription);
+        });
+        this.__publisher.publish({ data: this });
+        this.getValidMarketDay = this.getValidMarketDay.bind(this);
+        this.isMarketDay = this.isMarketDay.bind(this);
+        this.isMarketOpen = this.isMarketOpen.bind(this);
+        this.goBackANumberOfTicks = this.goBackANumberOfTicks.bind(this);
+    }
+    /**
+     * Returns a list of rule
+     * @property {rules}
+     * @returns {Array&lt;MarketRule>}
+     */
+    get rules() {
+        if (typeof this.__properties.rules === "function") {
+            return this.__activeSymbol ? this.__properties.rules(this.__activeSymbol) : [];
+        }
+        else {
+            return this.__properties.rules;
+        }
+    }
+    /**
+     * Returns boolean based on the current date is Week day or not
+     * @returns {boolean}
+     */
+    get isWeekDay() {
+        return (0, utils_2.checkIfWeekDay)(new Date(), this.rules).isValid;
+    }
+    /**
+     * Returns boolean based on the current date is holiday or not
+     * @returns {boolean}
+     */
+    get isHoliday() {
+        return (0, utils_2.checkIfHoliday)(new Date(), this.rules).isValid;
+    }
+    /**
+     * Returns a valid Market day
+     * @param {Date} date - the requested date to check and convert to a valid market day
+     * @returns {Date}
+     */
+    getValidMarketDay(date) {
+        date = new Date(date);
+        while (!this.isMarketDay(date)) {
+            date = (0, utils_2.goBackPreviousDay)(date);
+        }
+        return new Date(utils_2.convertToMarketHour.call(this, date));
+    }
+    /**
+     * Returns if the date specified is a valid market day without considering the market's active status
+     * @param {Date} [date=new Date()] - optional date value which defaults current Date
+     * @returns {boolean}
+     */
+    isMarketDay(date = new Date()) {
+        return (0, utils_2.checkIfWeekDay)(date, this.rules) &amp;&amp; !(0, utils_2.checkIfHoliday)(date, this.rules, true);
+    }
+    /**
+     * Returns boolean to check if the date is a valid market day and the time is a valid market session time
+     * @param {Date} [date=new Date()] - optional date value which defaults to current Date
+     * @returns {boolean}
+     */
+    isMarketOpen(date = new Date()) {
+        if (this.isMarketDay(date)) {
+            let currentDayRule = (0, utils_2.getCurrentDateRule)(date, this.rules);
+            if (currentDayRule.open &amp;&amp; currentDayRule.close) {
+                let openHrMin = (0, utils_2.extractHourMinFromRule)(currentDayRule.open), [currentMinute, currentHour] = [date.getMinutes(), date.getHours()], closeHrMin = (0, utils_2.extractHourMinFromRule)(currentDayRule.close);
+                return ((currentHour > openHrMin.hr ||
+                    (currentHour === openHrMin.hr &amp;&amp; currentMinute >= openHrMin.min)) /**market has started */
+                    &amp;&amp;
+                        (currentHour &lt; closeHrMin.hr ||
+                            (currentHour === closeHrMin.hr &amp;&amp; currentMinute &lt; closeHrMin.min)));
+            }
+        }
+        return false;
+    }
+    /**
+     * Backtrack to a valid market date from current date to a number of ticks
+     * @param {Date} fromDate - date from which the backtracking starts
+     * @param {number} numberOfTicks - the number of ticks to go back
+     * @param {string} resolution - active resolution
+     * @returns {Date}
+     */
+    goBackANumberOfTicks(fromDate, numberOfTicks, resolution) {
+        fromDate = new Date(fromDate);
+        while (numberOfTicks > 0) {
+            if ((0, utils_1.checkIsDailyTicks)(resolution)) {
+                //daily ticks
+                fromDate = this.getValidMarketDay(fromDate);
+                numberOfTicks--;
+            }
+            else {
+                //minute ticks
+                let res = parseInt(resolution, 10), timeOffset = 1e3 * 60 * res;
+                if (this.isMarketOpen(fromDate)) {
+                    fromDate = new Date(fromDate.getTime() - timeOffset);
+                }
+                else {
+                    fromDate = utils_2.convertToMarketHour.call(this, fromDate);
+                }
+                numberOfTicks--;
+            }
+        }
+        return new Date(fromDate);
+    }
+}
+exports.default = MarketManager;
+/**
+ * Token to subscribe to changes
+ * @static
+ * @member {string} MarketSubscriptionToken
+ */
+MarketManager.MarketSubscriptionToken = "MARKET_MANAGER_CHANGES";
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+</body>
+</html>

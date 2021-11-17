@@ -1,0 +1,163 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> utils/queue.ts</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="AbstractCompose.html">AbstractCompose</a></li><li><a href="ApiRequestor.html">ApiRequestor</a></li><li><a href="BroadcastHandler.html">BroadcastHandler</a></li><li><a href="ChartDataManager.html">ChartDataManager</a></li><li><a href="ChartSymbol.html">ChartSymbol</a></li><li><a href="module.exports.html">exports</a></li><li><a href="module.exports_module.exports.html">exports</a></li><li><a href="Publisher.html">Publisher</a></li><li><a href="Queue.html">Queue</a></li><li><a href="RangeManager.html">RangeManager</a></li><li><a href="Subscriber.html">Subscriber</a></li><li><a href="Subscription.html">Subscription</a></li><li><a href="Subscription_Subscription.html">Subscription</a></li></ul><h3>Interfaces</h3><ul><li><a href="ApiRequestorProps.html">ApiRequestorProps</a></li><li><a href="BroadcastCandle.html">BroadcastCandle</a></li><li><a href="BroadcastHandlerCandle.html">BroadcastHandlerCandle</a></li><li><a href="BroadcastQueue.html">BroadcastQueue</a></li><li><a href="Candle.html">Candle</a></li><li><a href="ChartSymbolProps.html">ChartSymbolProps</a></li><li><a href="DataManagerProps.html">DataManagerProps</a></li><li><a href="IApiRequestor.html">IApiRequestor</a></li><li><a href="IBroadcastHandler.html">IBroadcastHandler</a></li><li><a href="IChartDataManager.html">IChartDataManager</a></li><li><a href="IMarketManager.html">IMarketManager</a></li><li><a href="MarketManageProps.html">MarketManageProps</a></li><li><a href="MarketRule.html">MarketRule</a></li><li><a href="Range.html">Range</a></li><li><a href="RangeManagerProps.html">RangeManagerProps</a></li><li><a href="RequestRange.html">RequestRange</a></li><li><a href="SessionTime.html">SessionTime</a></li><li><a href="ValidRule.html">ValidRule</a></li></ul><h3>Global</h3><ul><li><a href="global.html#__subscription;">__subscription;</a></li><li><a href="global.html#allPublisherSubscribers">allPublisherSubscribers</a></li><li><a href="global.html#apiHandler">apiHandler</a></li><li><a href="global.html#broadcastCandle">broadcastCandle</a></li><li><a href="global.html#broadcastHandler">broadcastHandler</a></li><li><a href="global.html#changeSymbol">changeSymbol</a></li><li><a href="global.html#checkEverySecond">checkEverySecond</a></li><li><a href="global.html#checkIfHoliday">checkIfHoliday</a></li><li><a href="global.html#checkIfWeekDay">checkIfWeekDay</a></li><li><a href="global.html#checkIsDailyTicks">checkIsDailyTicks</a></li><li><a href="global.html#clearAll">clearAll</a></li><li><a href="global.html#convertToMarketHour">convertToMarketHour</a></li><li><a href="global.html#dequeue">dequeue</a></li><li><a href="global.html#EMPTY_CANDLE">EMPTY_CANDLE</a></li><li><a href="global.html#emptyAll">emptyAll</a></li><li><a href="global.html#enqueue">enqueue</a></li><li><a href="global.html#extractHourMinFromRule">extractHourMinFromRule</a></li><li><a href="global.html#findLastCandleTime">findLastCandleTime</a></li><li><a href="global.html#generateRequestRange">generateRequestRange</a></li><li><a href="global.html#getCurrentDateRule">getCurrentDateRule</a></li><li><a href="global.html#getRange">getRange</a></li><li><a href="global.html#getSubscribersList">getSubscribersList</a></li><li><a href="global.html#getSubscriptions">getSubscriptions</a></li><li><a href="global.html#getValidMarketDay">getValidMarketDay</a></li><li><a href="global.html#goBackANumberOfTicks">goBackANumberOfTicks</a></li><li><a href="global.html#goBackPreviousDay">goBackPreviousDay</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#initRange">initRange</a></li><li><a href="global.html#isHoliday">isHoliday</a></li><li><a href="global.html#isMarketDay">isMarketDay</a></li><li><a href="global.html#isMarketOpen">isMarketOpen</a></li><li><a href="global.html#isStreaming">isStreaming</a></li><li><a href="global.html#isWeekDay">isWeekDay</a></li><li><a href="global.html">MarketSubscriptionToken</a></li><li><a href="global.html#normalizeMinutes">normalizeMinutes</a></li><li><a href="global.html#publish">publish</a></li><li><a href="global.html">RangeChangeToken</a></li><li><a href="global.html#rangeSize">rangeSize</a></li><li><a href="global.html#requestCount">requestCount</a></li><li><a href="global.html#rules">rules</a></li><li><a href="global.html#subscribe">subscribe</a></li><li><a href="global.html">SubscriptionTopic</a></li><li><a href="global.html#symbol">symbol</a></li><li><a href="global.html">tickerDelimator</a></li><li><a href="global.html#topic">topic</a></li><li><a href="global.html#toString">toString</a></li><li><a href="global.html#unsubscribe">unsubscribe</a></li><li><a href="global.html#unsubscribeAll">unsubscribeAll</a></li><li><a href="global.html#unsubscribeList">unsubscribeList</a></li><li><a href="global.html#updateLastCandleTime">updateLastCandleTime</a></li><li><a href="global.html#updateProps">updateProps</a></li><li><a href="global.html#url">url</a></li><li><a href="global.html#%257B@template">{@template</a></li><li><a href="global.html#%257B@template%257D">{@template}</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>utils/queue.ts</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Queue implementation using Array
+ * @class Queue
+ * @template T
+ */
+export default class Queue&lt;T>{
+    /**
+     * @private
+     * @member {Array&lt;T>} __queue;
+     */
+    private __queue:Array&lt;T>;
+    /**
+     * Returns a Queue's instance
+     */
+    constructor(){
+        this.__queue = [];
+
+        this.enqueue = this.enqueue.bind(this);
+        this.dequeue = this.dequeue.bind(this);
+        this.emptyAll = this.emptyAll.bind(this);
+    }
+    /**
+     * Enqueue an item
+     * @param {@template T} item 
+     */
+    enqueue(item:T):void{
+        this.__queue.push(item);
+    }
+    /**
+     * Dequeue an item
+     * @returns {@template T |undefined}
+     */
+    dequeue():T|undefined{
+        return this.__queue.shift();
+    }
+    /**
+     * Empty the queue and return Array of queue items
+     * @returns {Array&lt;T>}
+     */
+    emptyAll():Array&lt;T>{
+        let allItems:Array&lt;T> = [];
+        for(let i=0;i&lt;this.__queue.length;i++){
+            let item:T|undefined = this.dequeue();
+            item &amp;&amp; allItems.push(item);
+        }
+        return allItems;
+    }
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+</body>
+</html>

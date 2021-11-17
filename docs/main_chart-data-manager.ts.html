@@ -1,0 +1,324 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> main/chart-data-manager.ts</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="AbstractCompose.html">AbstractCompose</a></li><li><a href="ApiRequestor.html">ApiRequestor</a></li><li><a href="BroadcastHandler.html">BroadcastHandler</a></li><li><a href="ChartDataManager.html">ChartDataManager</a></li><li><a href="ChartSymbol.html">ChartSymbol</a></li><li><a href="module.exports.html">exports</a></li><li><a href="module.exports_module.exports.html">exports</a></li><li><a href="Publisher.html">Publisher</a></li><li><a href="Queue.html">Queue</a></li><li><a href="RangeManager.html">RangeManager</a></li><li><a href="Subscriber.html">Subscriber</a></li><li><a href="Subscription.html">Subscription</a></li><li><a href="Subscription_Subscription.html">Subscription</a></li></ul><h3>Interfaces</h3><ul><li><a href="ApiRequestorProps.html">ApiRequestorProps</a></li><li><a href="BroadcastCandle.html">BroadcastCandle</a></li><li><a href="BroadcastHandlerCandle.html">BroadcastHandlerCandle</a></li><li><a href="BroadcastQueue.html">BroadcastQueue</a></li><li><a href="Candle.html">Candle</a></li><li><a href="ChartSymbolProps.html">ChartSymbolProps</a></li><li><a href="DataManagerProps.html">DataManagerProps</a></li><li><a href="IApiRequestor.html">IApiRequestor</a></li><li><a href="IBroadcastHandler.html">IBroadcastHandler</a></li><li><a href="IChartDataManager.html">IChartDataManager</a></li><li><a href="IMarketManager.html">IMarketManager</a></li><li><a href="MarketManageProps.html">MarketManageProps</a></li><li><a href="MarketRule.html">MarketRule</a></li><li><a href="Range.html">Range</a></li><li><a href="RangeManagerProps.html">RangeManagerProps</a></li><li><a href="RequestRange.html">RequestRange</a></li><li><a href="SessionTime.html">SessionTime</a></li><li><a href="ValidRule.html">ValidRule</a></li></ul><h3>Global</h3><ul><li><a href="global.html#__subscription;">__subscription;</a></li><li><a href="global.html#allPublisherSubscribers">allPublisherSubscribers</a></li><li><a href="global.html#apiHandler">apiHandler</a></li><li><a href="global.html#broadcastCandle">broadcastCandle</a></li><li><a href="global.html#broadcastHandler">broadcastHandler</a></li><li><a href="global.html#changeSymbol">changeSymbol</a></li><li><a href="global.html#checkEverySecond">checkEverySecond</a></li><li><a href="global.html#checkIfHoliday">checkIfHoliday</a></li><li><a href="global.html#checkIfWeekDay">checkIfWeekDay</a></li><li><a href="global.html#checkIsDailyTicks">checkIsDailyTicks</a></li><li><a href="global.html#clearAll">clearAll</a></li><li><a href="global.html#convertToMarketHour">convertToMarketHour</a></li><li><a href="global.html#dequeue">dequeue</a></li><li><a href="global.html#EMPTY_CANDLE">EMPTY_CANDLE</a></li><li><a href="global.html#emptyAll">emptyAll</a></li><li><a href="global.html#enqueue">enqueue</a></li><li><a href="global.html#extractHourMinFromRule">extractHourMinFromRule</a></li><li><a href="global.html#findLastCandleTime">findLastCandleTime</a></li><li><a href="global.html#generateRequestRange">generateRequestRange</a></li><li><a href="global.html#getCurrentDateRule">getCurrentDateRule</a></li><li><a href="global.html#getRange">getRange</a></li><li><a href="global.html#getSubscribersList">getSubscribersList</a></li><li><a href="global.html#getSubscriptions">getSubscriptions</a></li><li><a href="global.html#getValidMarketDay">getValidMarketDay</a></li><li><a href="global.html#goBackANumberOfTicks">goBackANumberOfTicks</a></li><li><a href="global.html#goBackPreviousDay">goBackPreviousDay</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#initRange">initRange</a></li><li><a href="global.html#isHoliday">isHoliday</a></li><li><a href="global.html#isMarketDay">isMarketDay</a></li><li><a href="global.html#isMarketOpen">isMarketOpen</a></li><li><a href="global.html#isStreaming">isStreaming</a></li><li><a href="global.html#isWeekDay">isWeekDay</a></li><li><a href="global.html">MarketSubscriptionToken</a></li><li><a href="global.html#normalizeMinutes">normalizeMinutes</a></li><li><a href="global.html#publish">publish</a></li><li><a href="global.html">RangeChangeToken</a></li><li><a href="global.html#rangeSize">rangeSize</a></li><li><a href="global.html#requestCount">requestCount</a></li><li><a href="global.html#rules">rules</a></li><li><a href="global.html#subscribe">subscribe</a></li><li><a href="global.html">SubscriptionTopic</a></li><li><a href="global.html#symbol">symbol</a></li><li><a href="global.html">tickerDelimator</a></li><li><a href="global.html#topic">topic</a></li><li><a href="global.html#toString">toString</a></li><li><a href="global.html#unsubscribe">unsubscribe</a></li><li><a href="global.html#unsubscribeAll">unsubscribeAll</a></li><li><a href="global.html#unsubscribeList">unsubscribeList</a></li><li><a href="global.html#updateLastCandleTime">updateLastCandleTime</a></li><li><a href="global.html#updateProps">updateProps</a></li><li><a href="global.html#url">url</a></li><li><a href="global.html#%257B@template">{@template</a></li><li><a href="global.html#%257B@template%257D">{@template}</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>main/chart-data-manager.ts</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import ApiRequestor, { ApiRequestorProps } from "../feeds/apiRequestor";
+import BroadcastHandler, { BroadcastCandle } from "../feeds/broadcast--handler";
+import { Candle } from "../feeds/utils";
+import { MarketManageProps } from "../market/marketManager";
+import ChartSymbol, { ChartSymbolProps } from "../symbol/symbol";
+import AbstractCompose from "../utils/abstract-composer";
+import Queue from "../utils/queue";
+
+/**!
+ * This is the props which is passed along the constructor of ChartDataManager
+ * @interface DataManagerProps
+ * @property {ChartSymbolProps} symbol - The symbol related basic properties to be passed
+ * @property {ApiRequestorProps} api - The constructor properties that has to be passed to initialize APIRequestor
+ * @property {MarketManageProps} market - The rules which will be made use by MarketManager to handle market scenario
+ */
+interface DataManagerProps {
+    symbol:ChartSymbolProps,
+    api:ApiRequestorProps,
+    market:MarketManageProps
+};
+/**
+ * All api methods with public access for ChartDataManager interface
+ * @interface IChartDataManager
+ */
+interface IChartDataManager{
+    /**
+     * Tries to fetch the initial Data i.e., the set of chart candles from a API Data source,
+     * which will initially fill up the visible range on charts
+     * @method getInitialData
+     * @param {string} resolution - The resolution which needs to be requested either 1,2,3,etc., mins or 1D, 1W or 1M
+     * D|W|M - specifies the Day|Week|Month;
+     * @param {string} requestBody - The stringified JSON object which will be posted to the API using the fetch API, must contain {fromDate &amp; toDate} range.
+     * @param {HeadersInit|undefined} [headers] - The optional parameter which contains the header object which will sent across the API request headers.
+     * @returns {Promise&lt;any>} - Fetch API promise is returned.
+     */
+    getInitialData(resolution:string, requestBody:string, headers:HeadersInit|undefined):Promise&lt;any>;
+    /**
+     * Tries to fetch the initial Data i.e., the set of chart candles from a API Data source,
+     * which will request for the data candles from API for the historic/ previous date range
+     * @method getInitialData
+     * @param {string} resolution - The resolution which needs to be requested either 1,2,3,etc., mins or 1D, 1W or 1M
+     * D|W|M - specifies the Day|Week|Month;
+     * @param {string} requestBody - The stringified JSON object which will be posted to the API using the fetch API, must contain {fromDate &amp; toDate} range.
+     * @param {HeadersInit|undefined} [headers] - The optional parameter which contains the header object which will sent across the API request headers.
+     * @returns {Promise&lt;any>} - Fetch API promise is returned.
+     */
+    getHistoricData(resolution:string, requestBody:string, headers:HeadersInit|undefined):Promise&lt;any>;
+    /**
+     * Updates the broadcast or real time candles on chart, with performing the streaming logic to 
+     * manipulate the OHLCV values
+     * @method updateRealTime
+     * @param {string} resolution - The resolution which is currently active on chart
+     * @param {BroadcastCandle} realTimeBroadcastCandle - The broadcast candle with only Close/LTP and the Full-Traded-Volume is enough also will accept other properties like Open, High and Low
+     * @returns {Candle|null}
+     */
+    updateRealTime(resolution:string, realTimeBroadcastCandle:BroadcastCandle):Candle|null;
+    /**
+     * Returns an array of candles which will be contain all the candles that where received when
+     * we trying to fetch the intial data from API and empties the queue.
+     * @returns {Array&lt;BroadcastQueue>}
+     */
+    emptyBroadcastQueue():Array&lt;BroadcastQueue>;
+    /**
+     * Will automatically update the pending candles which are available on Queue based on the 
+     * active symbol selected and empties the queue
+     */
+    updatePendingBroadcastCandles():void;
+};
+
+/**
+ * Structure of the Queue Item which holds the Broadcast queue when we receive streaming data 
+ * but still we are fetching the INITIAL data from API
+ * @interface BroadcastQueue
+ */
+interface BroadcastQueue{
+    /**
+     * @property {BroadcastCandle} realTimeCandle - The broadcast candle which is received from the streaming socket
+     * @property {string} ticker - The unique identifier for active symbol on chart generated for mapping respective candles based on active symbol
+     * to avoid data mismatch for wrong symbols
+     * @property {string} resolution - The active resolution on chart
+     */
+    realTimeCandle:BroadcastCandle;
+    ticker:string;
+    resolution:string;
+};
+
+/**
+ * The Manager class which allows api access to API, Broadcast, Market and Symbol's manager.
+ * @class ChartDataManager
+ * @extends AbstractCompose&lt;DataManagerProps>
+ * @implements {IChartDataManager}
+ */
+export default class ChartDataManager extends AbstractCompose&lt;DataManagerProps> implements IChartDataManager{
+    private __activeSymbol:ChartSymbol;
+    private __apiRequestor:ApiRequestor;
+    private __broadcastHandler:BroadcastHandler;
+    private __isStreaming:boolean;
+    private __broadcastCandleQueue:Queue&lt;BroadcastQueue>;
+    /**
+     * Creates a manager object based on the properties passed along the constructor
+     * @param {DataManagerProps} props - all properties to initate API, Broadcast, Market and Symbol handlers.
+     */
+    constructor(props:DataManagerProps){
+        super(props);
+        this.__activeSymbol = new ChartSymbol(props.symbol);
+        this.__apiRequestor = new ApiRequestor(props.api);
+        this.__broadcastHandler = new BroadcastHandler();
+        this.__isStreaming= false;
+        this.__broadcastCandleQueue = new Queue&lt;BroadcastQueue>();
+
+        this.getInitialData = this.getInitialData.bind(this);
+        this.getHistoricData = this.getHistoricData.bind(this);
+        this.updateRealTime = this.updateRealTime.bind(this);
+        this.emptyBroadcastQueue = this.emptyBroadcastQueue.bind(this);
+        this.updatePendingBroadcastCandles = this.updatePendingBroadcastCandles.bind(this);
+    }
+    /**
+     * Returns the active symbol on Chart
+     * @property {symbol}
+     * @returns {ChartSymbol}
+     */
+    get symbol():ChartSymbol{
+        return this.__activeSymbol;
+    }
+    /**
+     * Returns the API Requestor's API to access their utilites
+     * @property {apiHandler}
+     * @returns {ApiRequestor}
+     */
+    get apiHandler():ApiRequestor{
+        return this.__apiRequestor;
+    }
+    /**
+     * Returns the broadcast handler's API for streaming / real-time-updates related functions
+     * @property {broadcastHandler}
+     * @returns {BroadcastHandler}
+     */
+    get broadcastHandler():BroadcastHandler{
+        return this.__broadcastHandler;
+    }
+    /**
+     * Returns whether the streaming is currently enabled or not
+     * @property {isStreaming}
+     * @returns {boolean}
+     */
+    get isStreaming():boolean{
+        return this.__isStreaming;
+    }
+    /**
+     * Updates the status of isStreaming
+     * @private
+     * @method __updateStreamingStatus
+     * @param {boolean} isStreaming - The value to be updated
+     */
+    private __updateStreamingStatus(isStreaming:boolean):void{
+        this.__isStreaming = isStreaming;
+    }
+
+    getInitialData(resolution: string, requestBody: string, headers:HeadersInit|undefined=undefined): Promise&lt;any> {
+        this.__updateStreamingStatus(false);
+        return (
+            this.__apiRequestor.request(
+                resolution,
+                requestBody,
+                true,
+                headers
+            ).then((res:Response) => {
+                this.__updateStreamingStatus(true);
+                return res;
+            })
+        );
+    }
+    getHistoricData(resolution: string, requestBody: string, headers:HeadersInit|undefined=undefined): Promise&lt;any> {
+        return (
+            this.__apiRequestor.request(
+                resolution,
+                requestBody,
+                false,
+                headers,
+            )
+        );
+    }
+    updateRealTime(resolution: string, realTimeBroadcastCandle: BroadcastCandle):Candle|null {
+        if(this.__isStreaming){
+            return this.__broadcastHandler.stream(
+                realTimeBroadcastCandle,
+                resolution
+            );
+        }
+        else{
+            this.__broadcastCandleQueue.enqueue({
+                realTimeCandle:realTimeBroadcastCandle,
+                ticker:this.symbol.toString(),
+                resolution:resolution
+            });
+            return null;
+        }
+    }
+    
+    emptyBroadcastQueue():Array&lt;BroadcastQueue>{
+        return this.__broadcastCandleQueue.emptyAll();
+    }
+
+    updatePendingBroadcastCandles(): void {
+        this.emptyBroadcastQueue().forEach((queueItem:BroadcastQueue) => {
+            this.updateRealTime(queueItem.resolution, queueItem.realTimeCandle);
+        });
+    }
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+</body>
+</html>

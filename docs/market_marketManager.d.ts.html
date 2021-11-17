@@ -1,0 +1,237 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> market/marketManager.d.ts</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="AbstractCompose.html">AbstractCompose</a></li><li><a href="ApiRequestor.html">ApiRequestor</a></li><li><a href="BroadcastHandler.html">BroadcastHandler</a></li><li><a href="ChartDataManager.html">ChartDataManager</a></li><li><a href="ChartSymbol.html">ChartSymbol</a></li><li><a href="MarketManager.html">MarketManager</a></li><li><a href="Publisher.html">Publisher</a></li><li><a href="Queue.html">Queue</a></li><li><a href="RangeManager.html">RangeManager</a></li><li><a href="Subscriber.html">Subscriber</a></li></ul><h3>Interfaces</h3><ul><li><a href="ApiRequestorProps.html">ApiRequestorProps</a></li><li><a href="BroadcastCandle.html">BroadcastCandle</a></li><li><a href="BroadcastQueue.html">BroadcastQueue</a></li><li><a href="Candle.html">Candle</a></li><li><a href="ChartSymbolProps.html">ChartSymbolProps</a></li><li><a href="DataManagerProps.html">DataManagerProps</a></li><li><a href="IApiRequestor.html">IApiRequestor</a></li><li><a href="IBroadcastHandler.html">IBroadcastHandler</a></li><li><a href="IChartDataManager.html">IChartDataManager</a></li><li><a href="IMarketManager.html">IMarketManager</a></li><li><a href="MarketManageProps.html">MarketManageProps</a></li><li><a href="MarketRule.html">MarketRule</a></li><li><a href="Range.html">Range</a></li><li><a href="RangeManagerProps.html">RangeManagerProps</a></li><li><a href="SessionTime.html">SessionTime</a></li><li><a href="ValidRule.html">ValidRule</a></li></ul><h3>Global</h3><ul><li><a href="global.html#apiHandler">apiHandler</a></li><li><a href="global.html#broadcastCandle">broadcastCandle</a></li><li><a href="global.html#broadcastHandler">broadcastHandler</a></li><li><a href="global.html#isHoliday">isHoliday</a></li><li><a href="global.html#isStreaming">isStreaming</a></li><li><a href="global.html#isWeekDay">isWeekDay</a></li><li><a href="global.html">RangeChangeToken</a></li><li><a href="global.html#rangeSize">rangeSize</a></li><li><a href="global.html#rules">rules</a></li><li><a href="global.html#symbol">symbol</a></li><li><a href="global.html#url">url</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>market/marketManager.d.ts</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import ChartSymbol from "../symbol/symbol";
+import AbstractCompose from "../utils/abstract-composer";
+import MarketRule from "./rules";
+/**
+ * The function which should return the list of market rules based on the active symbol
+ * @typedef {(symbol:ChartSymbol) => Array&lt;MarketRule>} RulesFactory
+ */
+export declare type RulesFactory = ((symbol: ChartSymbol) => Array&lt;MarketRule>);
+/**
+ * The properties which will be passed to MarketManagerProps
+ * @interface
+ * @property {Array&lt;MarketRule>|RulesFactory} rules
+ */
+export interface MarketManageProps {
+    rules: Array&lt;MarketRule> | RulesFactory;
+}
+/**
+ * The function which will publically accesible via the Market manger's API
+ * @interface
+ */
+interface IMarketManager {
+    /**
+     * Returns a valid market day
+     * @param {Date} date - date to convert it to a valid market day
+     * @returns {Date}
+     */
+    getValidMarketDay(date: Date): Date;
+    /**
+     * Returns a flag indicating the provided date is a valid market day
+     * @param {Date} date - date to check
+     * @returns {boolean}
+     */
+    isMarketDay(date: Date): boolean;
+    /**
+     * Returns either true or false based on the date provided checking if the market is available and active for provided date
+     * @param {Date} date - date to check
+     * @returns {boolean}
+     */
+    isMarketOpen(date: Date): boolean;
+    /**
+     * Back tracks to a valid market date based on market timings to a specific amount of data
+     * @param {Date} fromDate - date to start from
+     * @param {number} numberOfTicks - the count of ticks to backtrack
+     * @param {string} resolution - the active resolution
+     * @returns {Date}
+     */
+    goBackANumberOfTicks(fromDate: Date, numberOfTicks: number, resolution: string): Date;
+}
+/**
+ * MarketManger which handles market and session management
+ * @class MarketManager
+ * @extends AbstractCompose&lt;MarketManageProps>
+ * @implements {IMarketManager}
+ */
+export default class MarketManager extends AbstractCompose&lt;MarketManageProps> implements IMarketManager {
+    /**
+     * The active symbol on chart
+     * @private
+     * @property {ChartSymbol} __activeSymbol
+     */
+    private __activeSymbol;
+    /**
+     * Token to subscribe to changes
+     * @static
+     * @property {string} MarketSubscriptionToken
+     */
+    static MarketSubscriptionToken: string;
+    /**
+     * The Publisher object which will publish changes to its subscribers
+     * @private
+     * @property {Publisher} __publisher
+     */
+    private __publisher;
+    /**
+     * Returns a MarketManager instance
+     * @param {MarketManagerProps} props - constructor properties
+     */
+    constructor(props: MarketManageProps);
+    /**
+     * Returns a list of rule
+     * @returns {Array&lt;MarketRule>}
+     */
+    get rules(): Array&lt;MarketRule>;
+    /**
+     * Returns boolean based on the current date is Week day or not
+     * @returns {boolean}
+     */
+    get isWeekDay(): boolean;
+    /**
+     * Returns boolean based on the current date is holiday or not
+     * @returns {boolean}
+     */
+    get isHoliday(): boolean;
+    /**
+     * Returns a valid Market day
+     * @param {Date} date - the requested date to check and convert to a valid market day
+     * @returns {Date}
+     */
+    getValidMarketDay(date: Date): Date;
+    /**
+     * Returns if the date specified is a valid market day without considering the market's active status
+     * @param {Date} [date=new Date()] - optional date value which defaults current Date
+     * @returns {boolean}
+     */
+    isMarketDay(date?: Date): boolean;
+    /**
+     * Returns boolean to check if the date is a valid market day and the time is a valid market session time
+     * @param {Date} [date=new Date()] - optional date value which defaults to current Date
+     * @returns {boolean}
+     */
+    isMarketOpen(date?: Date): boolean;
+    /**
+     * Backtrack to a valid market date from current date to a number of ticks
+     * @param {Date} fromDate - date from which the backtracking starts
+     * @param {number} numberOfTicks - the number of ticks to go back
+     * @param {string} resolution - active resolution
+     * @returns {Date}
+     */
+    goBackANumberOfTicks(fromDate: Date, numberOfTicks: number, resolution: string): Date;
+}
+export {};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+</body>
+</html>

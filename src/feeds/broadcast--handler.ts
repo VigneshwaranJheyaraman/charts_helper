@@ -3,7 +3,16 @@ import { Subscription, SubscriptionEvent } from "../pubsub/subscriber";
 import ChartSymbol from "../symbol/symbol";
 import AbstractCompose from "../utils/abstract-composer";
 import { Candle, checkIsDailyTicks, findLastCandleTime } from "./utils";
-
+/**
+ * The structure which the real time candles sent to the Broadcast-Handler must follow
+ * @interface
+ * @property {number} [open] - this is an optional value, which is considered only if sent and specifies the OPEN value
+ * @property {number} close - this value, which is the Last traded price of the symbol
+ * @property {number} [high] - this is an optional value, which is considered only if sent and specifies the HIGH value
+ * @property {number} [low] - this is an optional value, which is considered only if sent and specified the LOW value
+ * @property {number} [volume] - this is an optional value, which is considered only if sent and specifies the Total Traded Volume value
+ * @property {Date} date - this value, which is the time of the streaming candle
+ */
 export interface BroadcastCandle{
     open?:number;
     close:number;
@@ -12,7 +21,10 @@ export interface BroadcastCandle{
     volume?:number;
     date:Date;
 };
-
+/**
+ * Constant which denotes an empty candle
+ * @type {BroadcastHandler}
+ */
 const EMPTY_CANDLE:BroadcastHandlerCandle = {
     open:0,
     close:0,
@@ -22,22 +34,64 @@ const EMPTY_CANDLE:BroadcastHandlerCandle = {
     oldVolume:0,
     date:null
 };
-
+/**
+ * Broadcast handler Candle, which will be used to calculate the volume using oldVolume
+ * @interface
+ * @extends {Candle}
+ */
 interface BroadcastHandlerCandle extends Candle{
+    /**
+     * @property {number} [oldVolume] - This value denotes the previous volume received to calculate the trade volume for minute candles
+     */
     oldVolume?:number;
 }
-
+/**
+ * The functions which will be utilized by BroadcastHandler's API publically.
+ * @interface
+ */
 export interface IBroadcastHandler{
+    /**
+     * Perform the streaming logic and return a new Candle or null
+     * @param {BroadcastCandle} realTimeCandle - The real time candle
+     * @param {string} resolution - The active resolution on charts
+     * @returns {Candle|null}
+     */
     stream(realTimeCandle:BroadcastCandle, resolution:string): Candle|null;
-
+    /**
+     * Initializes the broadcast candle with a new Candle
+     * @param {Candle|undefined} lastCandle - The last candle which was received from API
+     */
     init(lastCandle:Candle|undefined):void;
 }
-
+/**
+ * BroadcastHandler - handles all streaming related implementation and functions
+ * @class BroadcastHandler
+ * @extends AbstractCompose
+ * @implements {IBroadcastHandler}
+ */
 export default class BroadcastHandler extends AbstractCompose<undefined> implements IBroadcastHandler{
+    /**
+     * The broadcast candle which is used internally by the handler to perform streaming related calculations
+     * @private 
+     * @property {BroadcastHandlerCandle} __broacastCandle
+     */
     private __broacastCandle:BroadcastHandlerCandle;
+    /**
+     * The active symbol on chart, which will be updated from subscription
+     * @private
+     * @property {ChartSymbol} __activeSymbol
+     */
     private __activeSymbol:ChartSymbol|null = null;
+    /**
+     * The market manager which will handle are the market related check and manages the candles being plotted and requested
+     * @private
+     * @property {MarketManager} __marketManager;
+     */
     private __marketManager:MarketManager|null =null;
-
+    /**
+     * Returns a new MarketManager instance
+     * @param {undefined} [props] 
+     */
     constructor(props:undefined=undefined){
         super(props);
         this.__broacastCandle = Object.assign({}, EMPTY_CANDLE);
@@ -64,13 +118,19 @@ export default class BroadcastHandler extends AbstractCompose<undefined> impleme
             ]);
         })
     }
-
+    /**
+     * Initialize broadcast candle based on the last candle
+     * @param {Candle|undefined} lastCandle - Last candle which will be updated as broadcast candle
+     */
     init(lastCandle: Candle | undefined): void {
         if(lastCandle){
             this.__broacastCandle = {...lastCandle};
         }
     }
-
+    /**
+     * Returns the current broadcast candle
+     * @returns {Candle}
+     */
     get broadcastCandle():Candle{
         return Object.assign({},this.__broacastCandle);
     }
@@ -106,11 +166,18 @@ export default class BroadcastHandler extends AbstractCompose<undefined> impleme
         }
         return null;
     }
-
+    /**
+     * Nullify the broadcast candle to initial state
+     * @private
+     */
     private __nullify():void{
         this.__broacastCandle = Object.assign({}, EMPTY_CANDLE);
     }
-
+    /**
+     * Updates the broadcast candle time with a new time and if time changes nullify the broadcast candle
+     * @param {Date} newCandleTime - new updated time
+     * @param {string} resolution - active resolution on charts
+     */
     updateLastCandleTime(newCandleTime:Date, resolution:string):void{
         if(this.broadcastCandle.date){
             const checkIfTimeIsDifferent:boolean = (

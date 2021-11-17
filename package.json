@@ -4,14 +4,21 @@
     "description": "Chart's helper for both Chart-IQ and Trading View",
     "main": "index.js",
     "scripts": {
-        "transpile": "tsc",
-        "docs": "npx typedoc"
+        "transpile": "npx tsc",
+        "docs": "npx jsdoc -c 'jsdoc.json'",
+        "get-docs": "npm run transpile && npm run docs"
     },
-    "keywords": [],
+    "keywords": [
+        "chart",
+        "finsemble",
+        "chartiq",
+        "tradingview"
+    ],
     "author": "vigneshwaran.j",
     "license": "ISC",
     "devDependencies": {
-        "typedoc": "^0.22.9"
+        "better-docs": "^2.3.2",
+        "jsdoc": "^3.6.7"
     },
     "dependencies": {
         "typescript": "^4.4.4"

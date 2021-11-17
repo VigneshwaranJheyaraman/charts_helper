@@ -1,0 +1,311 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> feeds/broadcast--handler.ts</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="AbstractCompose.html">AbstractCompose</a></li><li><a href="ApiRequestor.html">ApiRequestor</a></li><li><a href="BroadcastHandler.html">BroadcastHandler</a></li><li><a href="ChartDataManager.html">ChartDataManager</a></li><li><a href="ChartSymbol.html">ChartSymbol</a></li><li><a href="module.exports.html">exports</a></li><li><a href="module.exports_module.exports.html">exports</a></li><li><a href="Publisher.html">Publisher</a></li><li><a href="Queue.html">Queue</a></li><li><a href="RangeManager.html">RangeManager</a></li><li><a href="Subscriber.html">Subscriber</a></li><li><a href="Subscription.html">Subscription</a></li><li><a href="Subscription_Subscription.html">Subscription</a></li></ul><h3>Interfaces</h3><ul><li><a href="ApiRequestorProps.html">ApiRequestorProps</a></li><li><a href="BroadcastCandle.html">BroadcastCandle</a></li><li><a href="BroadcastHandlerCandle.html">BroadcastHandlerCandle</a></li><li><a href="BroadcastQueue.html">BroadcastQueue</a></li><li><a href="Candle.html">Candle</a></li><li><a href="ChartSymbolProps.html">ChartSymbolProps</a></li><li><a href="DataManagerProps.html">DataManagerProps</a></li><li><a href="IApiRequestor.html">IApiRequestor</a></li><li><a href="IBroadcastHandler.html">IBroadcastHandler</a></li><li><a href="IChartDataManager.html">IChartDataManager</a></li><li><a href="IMarketManager.html">IMarketManager</a></li><li><a href="MarketManageProps.html">MarketManageProps</a></li><li><a href="MarketRule.html">MarketRule</a></li><li><a href="Range.html">Range</a></li><li><a href="RangeManagerProps.html">RangeManagerProps</a></li><li><a href="RequestRange.html">RequestRange</a></li><li><a href="SessionTime.html">SessionTime</a></li><li><a href="ValidRule.html">ValidRule</a></li></ul><h3>Global</h3><ul><li><a href="global.html#__subscription;">__subscription;</a></li><li><a href="global.html#allPublisherSubscribers">allPublisherSubscribers</a></li><li><a href="global.html#apiHandler">apiHandler</a></li><li><a href="global.html#broadcastCandle">broadcastCandle</a></li><li><a href="global.html#broadcastHandler">broadcastHandler</a></li><li><a href="global.html#changeSymbol">changeSymbol</a></li><li><a href="global.html#checkEverySecond">checkEverySecond</a></li><li><a href="global.html#checkIfHoliday">checkIfHoliday</a></li><li><a href="global.html#checkIfWeekDay">checkIfWeekDay</a></li><li><a href="global.html#checkIsDailyTicks">checkIsDailyTicks</a></li><li><a href="global.html#clearAll">clearAll</a></li><li><a href="global.html#convertToMarketHour">convertToMarketHour</a></li><li><a href="global.html#dequeue">dequeue</a></li><li><a href="global.html#EMPTY_CANDLE">EMPTY_CANDLE</a></li><li><a href="global.html#emptyAll">emptyAll</a></li><li><a href="global.html#enqueue">enqueue</a></li><li><a href="global.html#extractHourMinFromRule">extractHourMinFromRule</a></li><li><a href="global.html#findLastCandleTime">findLastCandleTime</a></li><li><a href="global.html#generateRequestRange">generateRequestRange</a></li><li><a href="global.html#getCurrentDateRule">getCurrentDateRule</a></li><li><a href="global.html#getRange">getRange</a></li><li><a href="global.html#getSubscribersList">getSubscribersList</a></li><li><a href="global.html#getSubscriptions">getSubscriptions</a></li><li><a href="global.html#getValidMarketDay">getValidMarketDay</a></li><li><a href="global.html#goBackANumberOfTicks">goBackANumberOfTicks</a></li><li><a href="global.html#goBackPreviousDay">goBackPreviousDay</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#initRange">initRange</a></li><li><a href="global.html#isHoliday">isHoliday</a></li><li><a href="global.html#isMarketDay">isMarketDay</a></li><li><a href="global.html#isMarketOpen">isMarketOpen</a></li><li><a href="global.html#isStreaming">isStreaming</a></li><li><a href="global.html#isWeekDay">isWeekDay</a></li><li><a href="global.html">MarketSubscriptionToken</a></li><li><a href="global.html#normalizeMinutes">normalizeMinutes</a></li><li><a href="global.html#publish">publish</a></li><li><a href="global.html">RangeChangeToken</a></li><li><a href="global.html#rangeSize">rangeSize</a></li><li><a href="global.html#requestCount">requestCount</a></li><li><a href="global.html#rules">rules</a></li><li><a href="global.html#subscribe">subscribe</a></li><li><a href="global.html">SubscriptionTopic</a></li><li><a href="global.html#symbol">symbol</a></li><li><a href="global.html">tickerDelimator</a></li><li><a href="global.html#topic">topic</a></li><li><a href="global.html#toString">toString</a></li><li><a href="global.html#unsubscribe">unsubscribe</a></li><li><a href="global.html#unsubscribeAll">unsubscribeAll</a></li><li><a href="global.html#unsubscribeList">unsubscribeList</a></li><li><a href="global.html#updateLastCandleTime">updateLastCandleTime</a></li><li><a href="global.html#updateProps">updateProps</a></li><li><a href="global.html#url">url</a></li><li><a href="global.html#%257B@template">{@template</a></li><li><a href="global.html#%257B@template%257D">{@template}</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>feeds/broadcast--handler.ts</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import MarketManager from "../market/marketManager";
+import { Subscription, SubscriptionEvent } from "../pubsub/subscriber";
+import ChartSymbol from "../symbol/symbol";
+import AbstractCompose from "../utils/abstract-composer";
+import { Candle, checkIsDailyTicks, findLastCandleTime } from "./utils";
+/**
+ * The structure which the real time candles sent to the Broadcast-Handler must follow
+ * @interface
+ * @property {number} [open] - this is an optional value, which is considered only if sent and specifies the OPEN value
+ * @property {number} close - this value, which is the Last traded price of the symbol
+ * @property {number} [high] - this is an optional value, which is considered only if sent and specifies the HIGH value
+ * @property {number} [low] - this is an optional value, which is considered only if sent and specified the LOW value
+ * @property {number} [volume] - this is an optional value, which is considered only if sent and specifies the Total Traded Volume value
+ * @property {Date} date - this value, which is the time of the streaming candle
+ */
+export interface BroadcastCandle{
+    open?:number;
+    close:number;
+    high?:number;
+    low?:number;
+    volume?:number;
+    date:Date;
+};
+/**
+ * Constant which denotes an empty candle
+ * @type {BroadcastHandler}
+ */
+const EMPTY_CANDLE:BroadcastHandlerCandle = {
+    open:0,
+    close:0,
+    high:0,
+    low:0,
+    volume:0,
+    oldVolume:0,
+    date:null
+};
+/**
+ * Broadcast handler Candle, which will be used to calculate the volume using oldVolume
+ * @interface
+ * @extends {Candle}
+ */
+interface BroadcastHandlerCandle extends Candle{
+    /**
+     * @property {number} [oldVolume] - This value denotes the previous volume received to calculate the trade volume for minute candles
+     */
+    oldVolume?:number;
+}
+/**
+ * The functions which will be utilized by BroadcastHandler's API publically.
+ * @interface
+ */
+export interface IBroadcastHandler{
+    /**
+     * Perform the streaming logic and return a new Candle or null
+     * @param {BroadcastCandle} realTimeCandle - The real time candle
+     * @param {string} resolution - The active resolution on charts
+     * @returns {Candle|null}
+     */
+    stream(realTimeCandle:BroadcastCandle, resolution:string): Candle|null;
+    /**
+     * Initializes the broadcast candle with a new Candle
+     * @param {Candle|undefined} lastCandle - The last candle which was received from API
+     */
+    init(lastCandle:Candle|undefined):void;
+}
+/**
+ * BroadcastHandler - handles all streaming related implementation and functions
+ * @class BroadcastHandler
+ * @extends AbstractCompose
+ * @implements {IBroadcastHandler}
+ */
+export default class BroadcastHandler extends AbstractCompose&lt;undefined> implements IBroadcastHandler{
+    /**
+     * The broadcast candle which is used internally by the handler to perform streaming related calculations
+     * @private 
+     * @member {BroadcastHandlerCandle} __broacastCandle
+     */
+    private __broacastCandle:BroadcastHandlerCandle;
+    /**
+     * The active symbol on chart, which will be updated from subscription
+     * @private
+     * @member {ChartSymbol} __activeSymbol
+     */
+    private __activeSymbol:ChartSymbol|null = null;
+    /**
+     * The market manager which will handle are the market related check and manages the candles being plotted and requested
+     * @private
+     * @member {MarketManager} __marketManager;
+     */
+    private __marketManager:MarketManager|null =null;
+    /**
+     * Returns a new MarketManager instance
+     * @param {undefined} [props] 
+     */
+    constructor(props:undefined=undefined){
+        super(props);
+        this.__broacastCandle = Object.assign({}, EMPTY_CANDLE);
+
+        this.stream = this.stream.bind(this);
+        this.__nullify = this.__nullify.bind(this);
+        this.init = this.init.bind(this);
+        this.updateLastCandleTime = this.updateLastCandleTime.bind(this);
+
+        let symbolSubscription:Subscription = this.__subscription.subscribe(ChartSymbol.SubscriptionTopic, (event:SubscriptionEvent) => {
+            if(event.data){
+                this.__activeSymbol = event.data
+            }
+        }),
+            marketManagerSubscription:Subscription = this.__subscription.subscribe(MarketManager.MarketSubscriptionToken, (eve:SubscriptionEvent) => {
+                if(eve.data){
+                    this.__marketManager = eve.data;
+                }
+            });
+        window.addEventListener("beforeunload", () => {
+            this.__subscription.unsubscribeList([
+                {token:ChartSymbol.SubscriptionTopic, subscription:symbolSubscription},
+                {token:MarketManager.MarketSubscriptionToken, subscription:marketManagerSubscription}
+            ]);
+        })
+    }
+    /**
+     * Initialize broadcast candle based on the last candle
+     * @param {Candle|undefined} lastCandle - Last candle which will be updated as broadcast candle
+     */
+    init(lastCandle: Candle | undefined): void {
+        if(lastCandle){
+            this.__broacastCandle = {...lastCandle};
+        }
+    }
+    /**
+     * Returns the current broadcast candle
+     * @property {Candle} broadCastCandle
+     * @returns {Candle}
+     */
+    get broadcastCandle():Candle{
+        return Object.assign({},this.__broacastCandle);
+    }
+
+    stream(realTimeCandle: BroadcastCandle, resolution:string): Candle|null {
+        var broadCastCandle:BroadcastHandlerCandle = this.broadcastCandle;
+        if(broadCastCandle.date &amp;&amp; this.__activeSymbol &amp;&amp; this.__marketManager){
+            let newVolume:number = (realTimeCandle.volume ?? 0) - (broadCastCandle.volume || 0);
+            newVolume = newVolume &lt; 0 ? 0 : newVolume;
+            this.updateLastCandleTime(
+                findLastCandleTime(
+                    broadCastCandle.date, 
+                    realTimeCandle.date, 
+                    resolution, 
+                    this.__marketManager
+                ),
+                resolution
+            );
+            if(checkIsDailyTicks(resolution)){
+                //daily candles
+                newVolume = realTimeCandle.volume ?? 0;
+            }else{
+                newVolume = (broadCastCandle.volume ?? 0) + (newVolume);
+            }
+            broadCastCandle.close = realTimeCandle.close;
+            broadCastCandle.open = broadCastCandle.open || (realTimeCandle.open ?? realTimeCandle.close);
+            broadCastCandle.low = Math.min(Infinity, broadCastCandle.low, (realTimeCandle.low ?? realTimeCandle.close));
+            broadCastCandle.high = Math.max(0, broadCastCandle.high, (realTimeCandle.high ?? realTimeCandle.close));
+            broadCastCandle.volume = newVolume;
+            broadCastCandle.oldVolume = realTimeCandle.volume || 0;
+            this.__broacastCandle = Object.assign({}, broadCastCandle);
+            return Object.assign({}, broadCastCandle);
+        }
+        return null;
+    }
+    /**
+     * Nullify the broadcast candle to initial state
+     * @private
+     */
+    private __nullify():void{
+        this.__broacastCandle = Object.assign({}, EMPTY_CANDLE);
+    }
+    /**
+     * Updates the broadcast candle time with a new time and if time changes nullify the broadcast candle
+     * @param {Date} newCandleTime - new updated time
+     * @param {string} resolution - active resolution on charts
+     */
+    updateLastCandleTime(newCandleTime:Date, resolution:string):void{
+        if(this.broadcastCandle.date){
+            const checkIfTimeIsDifferent:boolean = (
+                checkIsDailyTicks(resolution) ? 
+                newCandleTime.toDateString() !== this.broadcastCandle.date?.toDateString() :
+                newCandleTime.getTime() !== this.broadcastCandle.date?.getTime()
+            );
+            if(checkIfTimeIsDifferent){
+                this.__nullify();
+                this.__broacastCandle.date = new Date(newCandleTime);
+            }
+        }
+    }
+
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+</body>
+</html>

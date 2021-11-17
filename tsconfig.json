@@ -14,10 +14,6 @@
       "alwaysStrict": true,
       "allowUnusedLabels": false
     },
-    "typedocOptions":{
-      "entryPoints": ["src/index.ts"],
-      "out":"docs"
-    },
     "exclude": ["node_modules"],
     "include": ["src/**/*"],
     "$schema": "https://json.schemastore.org/tsconfig",
