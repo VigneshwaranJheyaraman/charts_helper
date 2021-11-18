@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> ApiRequestorProps</title>
+  <title> feeds/broadcast-handler.d.ts</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -73,254 +75,110 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p>Interface</p>
-                    <h1>ApiRequestorProps</h1>
+                    <p>Source</p>
+                    <h1>feeds/broadcast-handler.d.ts</h1>
                 </header>
                 
 
 
 
-
-<section>
-
-<header>
     
-        <h2>ApiRequestorProps</h2>
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-            <div class="description"><p>ApiRequestor's properties that will be passed alongside the constructor</p></div>
-        
-
-        
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="feeds_apiRequestor.d.ts.html" class="button">View Source</a>
-            <span>
-                <a href="feeds_apiRequestor.d.ts.html">feeds/apiRequestor.d.ts</a>, <a href="feeds_apiRequestor.d.ts.html#line21">line 21</a>
-            </span>
-        </p>
-    
-</dl>
-
-
-        
-    
-    </div>
-    
-    
-        <h3 class="subsection-title">Extends</h3>
-
-        
-
-
-    <ul>
-        <li><a href="RangeManagerProps.html">RangeManagerProps</a></li>
-    </ul>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <div class='vertical-section'>
-            <h1>Members</h1>
-            <div class="members">
-            
-                <div class="member">
-
-    <span class="method-parameter is-pulled-right">
-        <label>Type:</label>
-        
-<span class="param-type">string</span>
-|
-
-<span class="param-type">URLFactory</span>
-
-
-    </span>
-
-<h4 class="name" id="url">
-    <a class="href-link" href="#url">#</a>
-    
-    <span class="code-name">
-        url
-    </span>
-    
-</h4>
-
-
-
-
-<div class="description">
-    <p>URL which will be called by the API for candles from External Server</p>
-</div>
-
-
-
-
-
-    <h5 class="subsection-title">Properties:</h5>
-
-    
-<div class="table-container">
-    <table class="props table">
-        <thead>
-        <tr>
-            
-            <th>Name</th>
-            
-
-            <th>Type</th>
-
-            
-
-            
-
-            <th class="last">Description</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        
-            
-<tr class="deep-level-0">
-    
-        <td class="name"><code>url</code></td>
-    
-
-    <td class="type">
-    
-        
-<span class="param-type">string</span>
-|
-
-<span class="param-type">URLFactory</span>
-
-
-    
-    </td>
-
-    
-
-    
-
-    <td class="description last"></td>
-</tr>
-
-        
-        </tbody>
-    </table>
-</div>
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="feeds_apiRequestor.d.ts.html" class="button">View Source</a>
-            <span>
-                <a href="feeds_apiRequestor.d.ts.html">feeds/apiRequestor.d.ts</a>, <a href="feeds_apiRequestor.d.ts.html#line27">line 27</a>
-            </span>
-        </p>
-    
-</dl>
-
-
-
-
-
-</div>
-            
-            </div>
-        </div>
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import AbstractCompose from "../utils/abstract-composer";
+import { Candle } from "./utils";
+/**
+ * The structure which the real time candles sent to the Broadcast-Handler must follow
+ * @interface
+ * @property {number} [open] - this is an optional value, which is considered only if sent and specifies the OPEN value
+ * @property {number} close - this value, which is the Last traded price of the symbol
+ * @property {number} [high] - this is an optional value, which is considered only if sent and specifies the HIGH value
+ * @property {number} [low] - this is an optional value, which is considered only if sent and specified the LOW value
+ * @property {number} [volume] - this is an optional value, which is considered only if sent and specifies the Total Traded Volume value
+ * @property {Date} date - this value, which is the time of the streaming candle
+ */
+export interface BroadcastCandle {
+    open?: number;
+    close: number;
+    high?: number;
+    low?: number;
+    volume?: number;
+    date: Date;
+}
+/**
+ * The functions which will be utilized by BroadcastHandler's API publically.
+ * @interface
+ */
+export interface IBroadcastHandler {
+    /**
+     * Perform the streaming logic and return a new Candle or null
+     * @param {BroadcastCandle} realTimeCandle - The real time candle
+     * @param {string} resolution - The active resolution on charts
+     * @returns {Candle|null}
+     */
+    stream(realTimeCandle: BroadcastCandle, resolution: string): Candle | null;
+    /**
+     * Initializes the broadcast candle with a new Candle
+     * @param {Candle|undefined} lastCandle - The last candle which was received from API
+     */
+    init(lastCandle: Candle | undefined): void;
+}
+/**
+ * BroadcastHandler - handles all streaming related implementation and functions
+ * @class BroadcastHandler
+ * @extends AbstractCompose
+ * @implements {IBroadcastHandler}
+ */
+export default class BroadcastHandler extends AbstractCompose&lt;undefined> implements IBroadcastHandler {
+    /**
+     * The broadcast candle which is used internally by the handler to perform streaming related calculations
+     * @private
+     * @property {BroadcastHandlerCandle} __broacastCandle
+     */
+    private __broacastCandle;
+    /**
+     * The active symbol on chart, which will be updated from subscription
+     * @private
+     * @property {ChartSymbol} __activeSymbol
+     */
+    private __activeSymbol;
+    /**
+     * The market manager which will handle are the market related check and manages the candles being plotted and requested
+     * @private
+     * @property {MarketManager} __marketManager;
+     */
+    private __marketManager;
+    /**
+     * Returns a new MarketManager instance
+     * @param {undefined} [props]
+     */
+    constructor(props?: undefined);
+    /**
+     * Initialize broadcast candle based on the last candle
+     * @param {Candle|undefined} lastCandle - Last candle which will be updated as broadcast candle
+     */
+    init(lastCandle: Candle | undefined): void;
+    /**
+     * Returns the current broadcast candle
+     * @returns {Candle}
+     */
+    get broadcastCandle(): Candle;
+    stream(realTimeCandle: BroadcastCandle, resolution: string): Candle | null;
+    /**
+     * Nullify the broadcast candle to initial state
+     * @private
+     */
+    private __nullify;
+    /**
+     * Updates the broadcast candle time with a new time and if time changes nullify the broadcast candle
+     * @param {Date} newCandleTime - new updated time
+     * @param {string} resolution - active resolution on charts
+     */
+    updateLastCandleTime(newCandleTime: Date, resolution: string): void;
+}
+</code></pre>
+        </article>
+    </section>
 
 
 

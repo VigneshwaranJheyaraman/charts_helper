@@ -66,7 +66,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="AbstractCompose.html">AbstractCompose</a></li><li><a href="ApiRequestor.html">ApiRequestor</a></li><li><a href="BroadcastHandler.html">BroadcastHandler</a></li><li><a href="ChartDataManager.html">ChartDataManager</a></li><li><a href="ChartSymbol.html">ChartSymbol</a></li><li><a href="MarketManager.html">MarketManager</a></li><li><a href="Publisher.html">Publisher</a></li><li><a href="Queue.html">Queue</a></li><li><a href="RangeManager.html">RangeManager</a></li><li><a href="Subscriber.html">Subscriber</a></li></ul><h3>Interfaces</h3><ul><li><a href="ApiRequestorProps.html">ApiRequestorProps</a></li><li><a href="BroadcastCandle.html">BroadcastCandle</a></li><li><a href="BroadcastQueue.html">BroadcastQueue</a></li><li><a href="Candle.html">Candle</a></li><li><a href="ChartSymbolProps.html">ChartSymbolProps</a></li><li><a href="DataManagerProps.html">DataManagerProps</a></li><li><a href="IApiRequestor.html">IApiRequestor</a></li><li><a href="IBroadcastHandler.html">IBroadcastHandler</a></li><li><a href="IChartDataManager.html">IChartDataManager</a></li><li><a href="IMarketManager.html">IMarketManager</a></li><li><a href="MarketManageProps.html">MarketManageProps</a></li><li><a href="MarketRule.html">MarketRule</a></li><li><a href="Range.html">Range</a></li><li><a href="RangeManagerProps.html">RangeManagerProps</a></li><li><a href="SessionTime.html">SessionTime</a></li><li><a href="ValidRule.html">ValidRule</a></li></ul><h3>Global</h3><ul><li><a href="global.html#apiHandler">apiHandler</a></li><li><a href="global.html#broadcastCandle">broadcastCandle</a></li><li><a href="global.html#broadcastHandler">broadcastHandler</a></li><li><a href="global.html#isHoliday">isHoliday</a></li><li><a href="global.html#isStreaming">isStreaming</a></li><li><a href="global.html#isWeekDay">isWeekDay</a></li><li><a href="global.html">RangeChangeToken</a></li><li><a href="global.html#rangeSize">rangeSize</a></li><li><a href="global.html#rules">rules</a></li><li><a href="global.html#symbol">symbol</a></li><li><a href="global.html#url">url</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="AbstractCompose.html">AbstractCompose</a></li><li><a href="ApiRequestor.html">ApiRequestor</a></li><li><a href="BroadcastHandler.html">BroadcastHandler</a></li><li><a href="ChartDataManager.html">ChartDataManager</a></li><li><a href="ChartSymbol.html">ChartSymbol</a></li><li><a href="LocalStore.html">LocalStore</a></li><li><a href="MarketManager.html">MarketManager</a></li><li><a href="Publisher.html">Publisher</a></li><li><a href="Queue.html">Queue</a></li><li><a href="RangeManager.html">RangeManager</a></li><li><a href="Subscriber.html">Subscriber</a></li></ul><h3>Interfaces</h3><ul><li><a href="ApiRequestorProps.html">ApiRequestorProps</a></li><li><a href="BroadcastCandle.html">BroadcastCandle</a></li><li><a href="BroadcastQueue.html">BroadcastQueue</a></li><li><a href="Candle.html">Candle</a></li><li><a href="ChartIQCandle.html">ChartIQCandle</a></li><li><a href="ChartSymbolProps.html">ChartSymbolProps</a></li><li><a href="DataManagerProps.html">DataManagerProps</a></li><li><a href="IApiRequestor.html">IApiRequestor</a></li><li><a href="IBroadcastHandler.html">IBroadcastHandler</a></li><li><a href="IChartDataManager.html">IChartDataManager</a></li><li><a href="IMarketManager.html">IMarketManager</a></li><li><a href="MarketManageProps.html">MarketManageProps</a></li><li><a href="MarketRule.html">MarketRule</a></li><li><a href="Range.html">Range</a></li><li><a href="RangeManagerProps.html">RangeManagerProps</a></li><li><a href="SessionTime.html">SessionTime</a></li><li><a href="StoreProps.html">StoreProps</a></li><li><a href="TradingViewCandle.html">TradingViewCandle</a></li><li><a href="ValidRule.html">ValidRule</a></li><li><a href="WebpackProps.html">WebpackProps</a></li></ul><h3>Global</h3><ul><li><a href="global.html#apiHandler">apiHandler</a></li><li><a href="global.html#broadcastCandle">broadcastCandle</a></li><li><a href="global.html#broadcastHandler">broadcastHandler</a></li><li><a href="global.html#isHoliday">isHoliday</a></li><li><a href="global.html#isStreaming">isStreaming</a></li><li><a href="global.html#isWeekDay">isWeekDay</a></li><li><a href="global.html">RangeChangeToken</a></li><li><a href="global.html#rangeSize">rangeSize</a></li><li><a href="global.html#rules">rules</a></li><li><a href="global.html#symbol">symbol</a></li><li><a href="global.html#url">url</a></li></ul></div>
                 
             </nav>
         </div>
@@ -174,7 +174,7 @@
         
         <span class="code-name">
             
-                request<span class="signature">(resolution, requestBody, isRequestForInitialData, headers<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;any>|Promise.&lt;any>}</span>
+                request<span class="signature">(resolution, requestBodyOrURLQuery, isRequestForInitialData, headers<span class="signature-attributes">opt</span>, method<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;any>|Promise.&lt;any>}</span>
             
         </span>
     </h4>
@@ -207,6 +207,8 @@
             <th>Attributes</th>
             
 
+            
+            <th>Default</th>
             
 
             <th class="last">Description</th>
@@ -242,6 +244,10 @@
   
 
   
+      <td class="default">
+      
+      </td>
+  
 
   <td class="description last"><p>the expected resolution for which chart has to be plotted</p></td>
 </tr>
@@ -252,7 +258,7 @@
             
 <tr class="deep-level-0">
   
-      <td class="name"><code>requestBody</code></td>
+      <td class="name"><code>requestBodyOrURLQuery</code></td>
   
 
   <td class="type">
@@ -275,8 +281,12 @@
   
 
   
+      <td class="default">
+      
+      </td>
+  
 
-  <td class="description last"><p>The stringiied JSON object which will added to the body</p></td>
+  <td class="description last"><p>The stringiied JSON object which will added to the body or URL Query attached alongside URL for GET request</p></td>
 </tr>
 
 
@@ -307,6 +317,10 @@
       </td>
   
 
+  
+      <td class="default">
+      
+      </td>
   
 
   <td class="description last"><p>The boolean value stating the nature of request
@@ -347,8 +361,53 @@ is it for initial data of for historic data so the range can be generated as suc
   
 
   
+      <td class="default">
+      
+      </td>
+  
 
   <td class="description last"><p>The optional paramter which will be passed as the headers for the request.</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>method</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+          &lt;optional><br>
+      
+
+      
+
+      
+      </td>
+  
+
+  
+      <td class="default">
+      
+          "POST"
+      
+      </td>
+  
+
+  <td class="description last"><p>The optional parameter to specify the method of API request</p></td>
 </tr>
 
 

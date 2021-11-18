@@ -1,5 +1,5 @@
 import ApiRequestor, { ApiRequestorProps } from "../feeds/apiRequestor";
-import BroadcastHandler, { BroadcastCandle } from "../feeds/broadcast--handler";
+import BroadcastHandler, { BroadcastCandle } from "../feeds/broadcast-handler";
 import { Candle } from "../feeds/utils";
 import { MarketManageProps } from "../market/marketManager";
 import ChartSymbol, { ChartSymbolProps } from "../symbol/symbol";
@@ -31,9 +31,10 @@ interface IChartDataManager{
      * D|W|M - specifies the Day|Week|Month;
      * @param {string} requestBody - The stringified JSON object which will be posted to the API using the fetch API, must contain {fromDate & toDate} range.
      * @param {HeadersInit|undefined} [headers] - The optional parameter which contains the header object which will sent across the API request headers.
+     * @param {string} [method="POST"] - Optional paramter which defaults to POST
      * @returns {Promise<any>} - Fetch API promise is returned.
      */
-    getInitialData(resolution:string, requestBody:string, headers:HeadersInit|undefined):Promise<any>;
+    getInitialData(resolution:string, requestBody:string, headers:HeadersInit|undefined, method:string):Promise<any>;
     /**
      * Tries to fetch the initial Data i.e., the set of chart candles from a API Data source,
      * which will request for the data candles from API for the historic/ previous date range
@@ -42,9 +43,10 @@ interface IChartDataManager{
      * D|W|M - specifies the Day|Week|Month;
      * @param {string} requestBody - The stringified JSON object which will be posted to the API using the fetch API, must contain {fromDate & toDate} range.
      * @param {HeadersInit|undefined} [headers] - The optional parameter which contains the header object which will sent across the API request headers.
+     * @param {string} [method="POST"] - Optional paramter which defaults to POST
      * @returns {Promise<any>} - Fetch API promise is returned.
      */
-    getHistoricData(resolution:string, requestBody:string, headers:HeadersInit|undefined):Promise<any>;
+    getHistoricData(resolution:string, requestBody:string, headers:HeadersInit|undefined, method:string):Promise<any>;
     /**
      * Updates the broadcast or real time candles on chart, with performing the streaming logic to 
      * manipulate the OHLCV values
@@ -152,27 +154,29 @@ export default class ChartDataManager extends AbstractCompose<DataManagerProps> 
         this.__isStreaming = isStreaming;
     }
 
-    getInitialData(resolution: string, requestBody: string, headers:HeadersInit|undefined=undefined): Promise<any> {
+    getInitialData(resolution: string, requestBody: string, headers:HeadersInit|undefined=undefined, method:string="POST"): Promise<any> {
         this.__updateStreamingStatus(false);
         return (
             this.__apiRequestor.request(
                 resolution,
                 requestBody,
                 true,
-                headers
+                headers,
+                method
             ).then((res:Response) => {
                 this.__updateStreamingStatus(true);
                 return res;
             })
         );
     }
-    getHistoricData(resolution: string, requestBody: string, headers:HeadersInit|undefined=undefined): Promise<any> {
+    getHistoricData(resolution: string, requestBody: string, headers:HeadersInit|undefined=undefined, method:string="POST"): Promise<any> {
         return (
             this.__apiRequestor.request(
                 resolution,
                 requestBody,
                 false,
                 headers,
+                method
             )
         );
     }

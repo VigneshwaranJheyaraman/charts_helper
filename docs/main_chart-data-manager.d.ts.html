@@ -68,7 +68,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="AbstractCompose.html">AbstractCompose</a></li><li><a href="ApiRequestor.html">ApiRequestor</a></li><li><a href="BroadcastHandler.html">BroadcastHandler</a></li><li><a href="ChartDataManager.html">ChartDataManager</a></li><li><a href="ChartSymbol.html">ChartSymbol</a></li><li><a href="MarketManager.html">MarketManager</a></li><li><a href="Publisher.html">Publisher</a></li><li><a href="Queue.html">Queue</a></li><li><a href="RangeManager.html">RangeManager</a></li><li><a href="Subscriber.html">Subscriber</a></li></ul><h3>Interfaces</h3><ul><li><a href="ApiRequestorProps.html">ApiRequestorProps</a></li><li><a href="BroadcastCandle.html">BroadcastCandle</a></li><li><a href="BroadcastQueue.html">BroadcastQueue</a></li><li><a href="Candle.html">Candle</a></li><li><a href="ChartSymbolProps.html">ChartSymbolProps</a></li><li><a href="DataManagerProps.html">DataManagerProps</a></li><li><a href="IApiRequestor.html">IApiRequestor</a></li><li><a href="IBroadcastHandler.html">IBroadcastHandler</a></li><li><a href="IChartDataManager.html">IChartDataManager</a></li><li><a href="IMarketManager.html">IMarketManager</a></li><li><a href="MarketManageProps.html">MarketManageProps</a></li><li><a href="MarketRule.html">MarketRule</a></li><li><a href="Range.html">Range</a></li><li><a href="RangeManagerProps.html">RangeManagerProps</a></li><li><a href="SessionTime.html">SessionTime</a></li><li><a href="ValidRule.html">ValidRule</a></li></ul><h3>Global</h3><ul><li><a href="global.html#apiHandler">apiHandler</a></li><li><a href="global.html#broadcastCandle">broadcastCandle</a></li><li><a href="global.html#broadcastHandler">broadcastHandler</a></li><li><a href="global.html#isHoliday">isHoliday</a></li><li><a href="global.html#isStreaming">isStreaming</a></li><li><a href="global.html#isWeekDay">isWeekDay</a></li><li><a href="global.html">RangeChangeToken</a></li><li><a href="global.html#rangeSize">rangeSize</a></li><li><a href="global.html#rules">rules</a></li><li><a href="global.html#symbol">symbol</a></li><li><a href="global.html#url">url</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="AbstractCompose.html">AbstractCompose</a></li><li><a href="ApiRequestor.html">ApiRequestor</a></li><li><a href="BroadcastHandler.html">BroadcastHandler</a></li><li><a href="ChartDataManager.html">ChartDataManager</a></li><li><a href="ChartSymbol.html">ChartSymbol</a></li><li><a href="LocalStore.html">LocalStore</a></li><li><a href="MarketManager.html">MarketManager</a></li><li><a href="Publisher.html">Publisher</a></li><li><a href="Queue.html">Queue</a></li><li><a href="RangeManager.html">RangeManager</a></li><li><a href="Subscriber.html">Subscriber</a></li></ul><h3>Interfaces</h3><ul><li><a href="ApiRequestorProps.html">ApiRequestorProps</a></li><li><a href="BroadcastCandle.html">BroadcastCandle</a></li><li><a href="BroadcastQueue.html">BroadcastQueue</a></li><li><a href="Candle.html">Candle</a></li><li><a href="ChartIQCandle.html">ChartIQCandle</a></li><li><a href="ChartSymbolProps.html">ChartSymbolProps</a></li><li><a href="DataManagerProps.html">DataManagerProps</a></li><li><a href="IApiRequestor.html">IApiRequestor</a></li><li><a href="IBroadcastHandler.html">IBroadcastHandler</a></li><li><a href="IChartDataManager.html">IChartDataManager</a></li><li><a href="IMarketManager.html">IMarketManager</a></li><li><a href="MarketManageProps.html">MarketManageProps</a></li><li><a href="MarketRule.html">MarketRule</a></li><li><a href="Range.html">Range</a></li><li><a href="RangeManagerProps.html">RangeManagerProps</a></li><li><a href="SessionTime.html">SessionTime</a></li><li><a href="StoreProps.html">StoreProps</a></li><li><a href="TradingViewCandle.html">TradingViewCandle</a></li><li><a href="ValidRule.html">ValidRule</a></li><li><a href="WebpackProps.html">WebpackProps</a></li></ul><h3>Global</h3><ul><li><a href="global.html#apiHandler">apiHandler</a></li><li><a href="global.html#broadcastCandle">broadcastCandle</a></li><li><a href="global.html#broadcastHandler">broadcastHandler</a></li><li><a href="global.html#isHoliday">isHoliday</a></li><li><a href="global.html#isStreaming">isStreaming</a></li><li><a href="global.html#isWeekDay">isWeekDay</a></li><li><a href="global.html">RangeChangeToken</a></li><li><a href="global.html#rangeSize">rangeSize</a></li><li><a href="global.html#rules">rules</a></li><li><a href="global.html#symbol">symbol</a></li><li><a href="global.html#url">url</a></li></ul></div>
                 
             </nav>
         </div>
@@ -86,7 +86,7 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import ApiRequestor, { ApiRequestorProps } from "../feeds/apiRequestor";
-import BroadcastHandler, { BroadcastCandle } from "../feeds/broadcast--handler";
+import BroadcastHandler, { BroadcastCandle } from "../feeds/broadcast-handler";
 import { Candle } from "../feeds/utils";
 import { MarketManageProps } from "../market/marketManager";
 import ChartSymbol, { ChartSymbolProps } from "../symbol/symbol";
@@ -116,9 +116,10 @@ interface IChartDataManager {
      * D|W|M - specifies the Day|Week|Month;
      * @param {string} requestBody - The stringified JSON object which will be posted to the API using the fetch API, must contain {fromDate &amp; toDate} range.
      * @param {HeadersInit|undefined} [headers] - The optional parameter which contains the header object which will sent across the API request headers.
+     * @param {string} [method="POST"] - Optional paramter which defaults to POST
      * @returns {Promise&lt;any>} - Fetch API promise is returned.
      */
-    getInitialData(resolution: string, requestBody: string, headers: HeadersInit | undefined): Promise&lt;any>;
+    getInitialData(resolution: string, requestBody: string, headers: HeadersInit | undefined, method: string): Promise&lt;any>;
     /**
      * Tries to fetch the initial Data i.e., the set of chart candles from a API Data source,
      * which will request for the data candles from API for the historic/ previous date range
@@ -127,9 +128,10 @@ interface IChartDataManager {
      * D|W|M - specifies the Day|Week|Month;
      * @param {string} requestBody - The stringified JSON object which will be posted to the API using the fetch API, must contain {fromDate &amp; toDate} range.
      * @param {HeadersInit|undefined} [headers] - The optional parameter which contains the header object which will sent across the API request headers.
+     * @param {string} [method="POST"] - Optional paramter which defaults to POST
      * @returns {Promise&lt;any>} - Fetch API promise is returned.
      */
-    getHistoricData(resolution: string, requestBody: string, headers: HeadersInit | undefined): Promise&lt;any>;
+    getHistoricData(resolution: string, requestBody: string, headers: HeadersInit | undefined, method: string): Promise&lt;any>;
     /**
      * Updates the broadcast or real time candles on chart, with performing the streaming logic to
      * manipulate the OHLCV values
@@ -211,8 +213,8 @@ export default class ChartDataManager extends AbstractCompose&lt;DataManagerProp
      * @param {boolean} isStreaming - The value to be updated
      */
     private __updateStreamingStatus;
-    getInitialData(resolution: string, requestBody: string, headers?: HeadersInit | undefined): Promise&lt;any>;
-    getHistoricData(resolution: string, requestBody: string, headers?: HeadersInit | undefined): Promise&lt;any>;
+    getInitialData(resolution: string, requestBody: string, headers?: HeadersInit | undefined, method?: string): Promise&lt;any>;
+    getHistoricData(resolution: string, requestBody: string, headers?: HeadersInit | undefined, method?: string): Promise&lt;any>;
     updateRealTime(resolution: string, realTimeBroadcastCandle: BroadcastCandle): Candle | null;
     emptyBroadcastQueue(): Array&lt;BroadcastQueue>;
     updatePendingBroadcastCandles(): void;
