@@ -1,5 +1,5 @@
 {
-    "name": "charts_helper",
+    "name": "@msf/msf-charts-helper",
     "version": "1.0.0",
     "description": "Chart's helper for both Chart-IQ and Trading View",
     "main": "./dist/index.js",
