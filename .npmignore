@@ -1,0 +1,15 @@
+#source code
+src
+#dependencies
+node_modules
+package-lock.json
+#documentation
+docs
+#configuration
+tsconfig.json
+jsdocs.json
+.npmrc
+#licenese
+LICENSE
+#Changes log
+Changelog

@@ -1,6 +1,9 @@
+#testing related
 test
-dev
-package-lock.json
-.env
+#bundling related
 dist
+#dependencies related
+package-lock.json
 node_modules
+#local environment related
+.env

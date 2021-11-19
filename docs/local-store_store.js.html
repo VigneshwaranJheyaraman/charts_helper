@@ -1,0 +1,295 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> local-store/store.js</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="AbstractCompose.html">AbstractCompose</a></li><li><a href="ApiRequestor.html">ApiRequestor</a></li><li><a href="BroadcastHandler.html">BroadcastHandler</a></li><li><a href="ChartDataManager.html">ChartDataManager</a></li><li><a href="ChartSymbol.html">ChartSymbol</a></li><li><a href="DeviceIdentifier.html">DeviceIdentifier</a></li><li><a href="DeviceInterface.html">DeviceInterface</a></li><li><a href="LocalStore.html">LocalStore</a></li><li><a href="MarketManager.html">MarketManager</a></li><li><a href="Publisher.html">Publisher</a></li><li><a href="Queue.html">Queue</a></li><li><a href="RangeManager.html">RangeManager</a></li><li><a href="Store.html">Store</a></li><li><a href="Subscriber.html">Subscriber</a></li><li><a href="Subscription.html">Subscription</a></li></ul><h3>Global</h3><ul><li><a href="global.html#allPublisherSubscribers">allPublisherSubscribers</a></li><li><a href="global.html#checkEverySecond">checkEverySecond</a></li><li><a href="global.html#checkIfHoliday">checkIfHoliday</a></li><li><a href="global.html#checkIfWeekDay">checkIfWeekDay</a></li><li><a href="global.html#checkIsDailyTicks">checkIsDailyTicks</a></li><li><a href="global.html#convertCandleToChartIQCandle">convertCandleToChartIQCandle</a></li><li><a href="global.html#convertCandleToTradingViewCandle">convertCandleToTradingViewCandle</a></li><li><a href="global.html#convertObjectToURLString">convertObjectToURLString</a></li><li><a href="global.html#convertToMarketHour">convertToMarketHour</a></li><li><a href="global.html#decodeDataFromLocalStore">decodeDataFromLocalStore</a></li><li><a href="global.html#EMPTY_CANDLE">EMPTY_CANDLE</a></li><li><a href="global.html#encodeDataForLocalStore">encodeDataForLocalStore</a></li><li><a href="global.html#extractHourMinFromRule">extractHourMinFromRule</a></li><li><a href="global.html#findLastCandleTime">findLastCandleTime</a></li><li><a href="global.html#getBasicWebpackConfigForChartIQ">getBasicWebpackConfigForChartIQ</a></li><li><a href="global.html#getBasicWebpackConfigForTradingView">getBasicWebpackConfigForTradingView</a></li><li><a href="global.html#getCurrentDateRule">getCurrentDateRule</a></li><li><a href="global.html#getHolidaySessionFromMarketRules">getHolidaySessionFromMarketRules</a></li><li><a href="global.html#getHolidaysStringFromMarketRules">getHolidaysStringFromMarketRules</a></li><li><a href="global.html#getSessionTimeFromCurrentRule">getSessionTimeFromCurrentRule</a></li><li><a href="global.html#getSubscribersList">getSubscribersList</a></li><li><a href="global.html#goBackPreviousDay">goBackPreviousDay</a></li><li><a href="global.html#invokeDeviceInterfaceInvokesamethodnameontheapplication-logicviatheJSInterface/MessageHandler'sAPI">invokeDeviceInterface
+Invokes a method name on the application-logic via the JSInterface / MessageHandler's API</a></li><li><a href="global.html#normalizeMinutes">normalizeMinutes</a></li><li><a href="global.html">RangeChangeToken</a></li><li><a href="global.html#saveLayout">saveLayout</a></li><li><a href="global.html#storeKeyword">storeKeyword</a></li><li><a href="global.html#subscribe">subscribe</a></li><li><a href="global.html#unsubscribe">unsubscribe</a></li><li><a href="global.html#updateBroadcastCandleWithRealTimeChartUpdates">updateBroadcastCandleWithRealTimeChartUpdates</a></li><li><a href="global.html#updateURLState">updateURLState</a></li><li><a href="global.html#updateUrlStateBasedOnCurrentSymbol">updateUrlStateBasedOnCurrentSymbol</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>local-store/store.js</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>"use strict";
+var __importDefault = (this &amp;&amp; this.__importDefault) || function (mod) {
+    return (mod &amp;&amp; mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const abstract_composer_1 = __importDefault(require("../utils/abstract-composer"));
+const utils_1 = require("./utils");
+/**
+ * @constant
+ * @type {string}
+ */
+const storeKeyword = "store";
+/**
+ * LocalStore provides API for localStorage and will abstract the external API from direct data access
+ * @class LocalStore
+ */
+class LocalStore {
+    /**
+     * Retrieves all localStorage values and returns a LocalStore's instance
+     */
+    constructor() {
+        try {
+            var storeFromLocalStore = JSON.parse(localStorage.getItem(storeKeyword) || "{}");
+        }
+        catch (err) {
+            storeFromLocalStore = {};
+        }
+        this.__store = {};
+        if (storeFromLocalStore) {
+            Object.keys(storeFromLocalStore).forEach((key) => {
+                if (storeFromLocalStore &amp;&amp; storeFromLocalStore[key]) {
+                    this.__store[key] = {
+                        enableEncoding: !!storeFromLocalStore[key].enableEncoding,
+                        data: Store.fromJSONString(storeFromLocalStore[key].data),
+                    };
+                }
+            });
+        }
+        this.get = this.get.bind(this);
+        this.set = this.set.bind(this);
+        this.toString = this.toString.bind(this);
+    }
+    /**
+     * Returns the Store object for a specfic key
+     * @param {string} key - Key to extract from LocalStore
+     * @returns {Store|undefined}
+     */
+    get(key) {
+        return key in this.__store ? this.__store[key].data : undefined;
+    }
+    /**
+     * Set's the
+     * @param key
+     * @param value
+     */
+    set(key, value) {
+        this.__store[key] = {
+            data: value,
+            enableEncoding: !!value.props.encodeString,
+        };
+        localStorage.setItem(storeKeyword, this.toString());
+    }
+    /**
+     * String implementation for the LocalStore's instance
+     * @returns {string}
+     */
+    toString() {
+        let storeToString = {};
+        Object.keys(this.__store).forEach((key) => {
+            let store = this.get(key);
+            if (store) {
+                storeToString[key] = {
+                    enableEncoding: store.encodeString ? "yes" : "no",
+                    data: store.toString(),
+                };
+            }
+        });
+        return JSON.stringify(storeToString);
+    }
+}
+exports.default = LocalStore;
+/**
+ * Store which can handle its own set of items
+ * @class Store
+ * @extends AbstractCompose&lt;StoreProps|Store>
+ */
+class Store extends abstract_composer_1.default {
+    /**
+     * Return's a Store's instance
+     * @param {StoreProps|Store} props - constructor properties
+     */
+    constructor(props = {
+        encodeString: false,
+    }) {
+        super(props);
+        if (props instanceof Store) {
+            this.__store = props.__store;
+            this.updateProps(props.props);
+        }
+        else {
+            this.__store = new Map();
+        }
+        this.get = this.get.bind(this);
+        this.set = this.set.bind(this);
+        this.toString = this.toString.bind(this);
+    }
+    /**
+     * Check if the store has encoding enabled to encode the data for security reasons
+     * @memberof Store
+     * @member {boolean}
+     */
+    get encodeString() {
+        return !!this.props.encodeString;
+    }
+    /**
+     * Get a value from store
+     * @param {string} key
+     * @returns {string|undefined}
+     */
+    get(key) {
+        return this.encodeString
+            ? (0, utils_1.decodeDataFromLocalStore)(this.__store.get(key) || "")
+            : this.__store.get(key);
+    }
+    /**
+     * Updates the store with a new key or existing key
+     * @param {string} key - key to insert
+     * @param {any} value - value to insert
+     */
+    set(key, value) {
+        if (typeof value === "object") {
+            value = JSON.stringify(value);
+        }
+        if (this.encodeString) {
+            this.__store.set(key, (0, utils_1.encodeDataForLocalStore)(value));
+        }
+        else {
+            this.__store.set(key, value);
+        }
+    }
+    /**
+     * String implementation fo Store's instance
+     * @returns {string}
+     */
+    toString() {
+        let mappedStore = {}, storeIterator = this.__store.entries(), currentValue = storeIterator.next();
+        while (!currentValue.done) {
+            let [key, value] = currentValue.value;
+            mappedStore[key] = value;
+            currentValue = storeIterator.next();
+        }
+        return JSON.stringify(mappedStore);
+    }
+    /**
+     * Extracts store from stringified store and generates a Store's instance
+     * @static
+     * @method
+     * @param {string} jsonString - JSON string to convert
+     * @param {boolean} [isEnabledEncoding=false] - optional value to enable or disable encoding of data
+     * @returns {Store}
+     */
+    static fromJSONString(jsonString, isEnabledEncoding = false) {
+        let mappedStore = {}, newStore = new Store();
+        try {
+            mappedStore = JSON.parse(jsonString);
+        }
+        catch (err) {
+            console.error("Error restoring");
+        }
+        Object.keys(mappedStore).forEach((key) => {
+            newStore.set(key, mappedStore[key]);
+        });
+        newStore.updateProps({
+            encodeString: isEnabledEncoding,
+        });
+        return newStore;
+    }
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+</body>
+</html>

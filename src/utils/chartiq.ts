@@ -1,7 +1,9 @@
 import { Candle } from "../feeds/utils";
 
 /**
- * Function can be called inside saveLayout which will be called every time layout event listener
+ * @category Chart-IQ-Utils
+ * @method saveLayout
+ * @description Function can be called inside saveLayout which will be called every time layout event listener
  * is triggered also, doesn't nullifies the setSpan property for the layout
  * @param {any} stx - Chart engine object which will passed inside saveLayout event callback function as a param
  * @param {any} localLayout - Local variable which handles the previous stored layout
@@ -22,7 +24,9 @@ export function saveLayout(stx: any, localLayout: any): any {
   return localLayout;
 }
 /**
- * Updates the rela time candles on chart showing every second updates
+ * @category Chart-IQ-Utils
+ * @method updateBroadcastCandleWithRealTimeChartUpdates
+ * @description Updates the rela time candles on chart showing every second updates
  * @param {any} stx - Chart engine's object
  * @param {BroadcastCandle} broadCastCandle - Broadcast candle's format
  */
@@ -35,7 +39,8 @@ export function updateBroadcastCandleWithRealTimeChartUpdates(
   });
 }
 /**
- * Chart-IQ's candle structure
+ * @category Chart-IQ-Utils
+ * @description Chart-IQ's candle structure
  * @interface ChartIQCandle
  * @property {Date} DT - Date
  * @property {number} Open - Open value
@@ -44,7 +49,7 @@ export function updateBroadcastCandleWithRealTimeChartUpdates(
  * @property {number} Low - Low value
  * @property {number} [Volume] - Volume optional value
  */
-interface ChartIQCandle {
+export interface ChartIQCandle {
   DT: Date;
   Open: number;
   Close: number;
@@ -53,7 +58,9 @@ interface ChartIQCandle {
   Low: number;
 }
 /**
- * Converts regular candle from API to Chart IQ's acceptable format
+ * @category Chart-IQ-Utils
+ * @method convertCandleToChartIQCandle
+ * @description Converts regular candle from API to Chart IQ's acceptable format
  * @param {Candle} candle - candle provided by API
  * @returns {ChartIQCandle}
  */

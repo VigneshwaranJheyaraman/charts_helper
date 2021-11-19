@@ -1,7 +1,9 @@
 import MarketManager from "../market/marketManager";
 import { convertToMarketHour } from "../market/utils";
 /**
- * Wait for a function to call and try checking for every interval
+ * @category Feed-Utils
+ * @method checkEverySecond
+ * @description Wait for a function to call and try checking for every interval
  * @param {Function} callback - The function which will be called when the condition is satisfied
  * @param {boolean} checkCondition - The condition to check frequently until it is satisfied
  * @param {number} [timeOutMs=1000] - The optional value which will specify the time to call the function
@@ -39,7 +41,9 @@ export interface Candle {
   volume?: number;
 }
 /**
- * Checks if the provided resolution is Daily candles like (Day, Week or Month) else minute candles like (1,2,3 min etc.,)
+ * @category Feed-Utils
+ * @method checkIsDailyTicks
+ * @description Checks if the provided resolution is Daily candles like (Day, Week or Month) else minute candles like (1,2,3 min etc.,)
  * @param {string} resolution - the resolution to check
  * @returns {boolean}
  */
@@ -47,7 +51,9 @@ export function checkIsDailyTicks(resolution: string): boolean {
   return /[DWM]/.test(resolution);
 }
 /**
- * Function will convert the date to the nearby candle time based on resolution
+ * @category Feed-Utils
+ * @method normalizeMinutes
+ * @description Function will convert the date to the nearby candle time based on resolution
  * @param {Date} date - date to convert
  * @param {string} resolution - resolution to check
  * @returns {Date}
@@ -67,7 +73,9 @@ export function normalizeMinutes(date: Date, resolution: string): Date {
   }
 }
 /**
- * Determines the last candle to be plotted on chart based on the last plotted candle
+ * @category Feed-Utils
+ * @method findLastCandleTime
+ * @description Determines the last candle to be plotted on chart based on the last plotted candle
  * @param {Date} lastCandleTime - last plotted candle's time
  * @param {Date} broadCastCandleTime - the broadcast candle's time
  * @param {string} resolution - active resolution on chart

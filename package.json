@@ -2,11 +2,12 @@
     "name": "charts_helper",
     "version": "1.0.0",
     "description": "Chart's helper for both Chart-IQ and Trading View",
-    "main": "index.js",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
     "scripts": {
         "transpile": "npx tsc",
         "docs": "npx jsdoc -c 'jsdoc.json'",
-        "get-docs": "npm run transpile && npm run docs"
+        "build": "npm run transpile && npm run docs"
     },
     "keywords": [
         "chart",

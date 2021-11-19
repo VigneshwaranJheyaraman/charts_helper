@@ -1,10 +1,12 @@
 import { Candle } from "../feeds/utils";
 import MarketRule from "../market/rules";
 /**
- * Returns a session timing acceptable by Trading-View for provided market rule
+ * @category Trading-View-Utils
+ * @method getSessionTimeFromCurrentRule
+ * @description Returns a session timing acceptable by Trading-View for provided market rule
  * For default session pass the rules list's first rule
  * @param {MarketRule} rule - rule to generate the session for
- * @returns
+ * @returns {string}
  */
 export function getSessionTimeFromCurrentRule(rule: MarketRule): string {
   if (rule.open && rule.close) {
@@ -13,7 +15,9 @@ export function getSessionTimeFromCurrentRule(rule: MarketRule): string {
   return "";
 }
 /**
- * Returns a string which will passed to corrections inside resolveSymbol for Trading-View
+ * @category Trading-View-Utils
+ * @method getHolidaySessionFromMarketRules
+ * @description Returns a string which will passed to corrections inside resolveSymbol for Trading-View
  * Specifies the valid session time for holiday
  * @param {Array<MarketRules>} rules - list of rules
  * @returns {string}
@@ -32,7 +36,9 @@ export function getHolidaySessionFromMarketRules(
     .join(";");
 }
 /**
- * Returns the list of holidays, So the trading view's chart doesn't plot those dates on chart
+ * @category Trading-View-Utils
+ * @method getHolidaysStringFromMarketRules
+ * @description Returns the list of holidays, So the trading view's chart doesn't plot those dates on chart
  * @param {Array<MarketRule>} rules - list of rules
  * @returns {string}
  */
@@ -47,7 +53,8 @@ export function getHolidaysStringFromMarketRules(
     .join(",");
 }
 /**
- * Trading View's candle format
+ * @category Trading-View-Utils
+ * @description Trading View's candle format
  * @interface TradingViewCandle
  * @property {number} time - current time in millisecond
  * @property {number} open - open
@@ -56,7 +63,7 @@ export function getHolidaysStringFromMarketRules(
  * @property {number} high - high
  * @property {number} [volume] - volume optional
  */
-interface TradingViewCandle {
+export interface TradingViewCandle {
   time: number;
   open: number;
   close: number;
@@ -65,7 +72,9 @@ interface TradingViewCandle {
   volume?: number;
 }
 /**
- * Converts regular candle into Trading-view' acceptable format
+ * @category Trading-View-Utils
+ * @method convertCandleToTradingViewCandle
+ * @description Converts regular candle into Trading-view' acceptable format
  * @param {Candle} candle - candle provide by API
  * @returns {TradingViewCandle}
  */

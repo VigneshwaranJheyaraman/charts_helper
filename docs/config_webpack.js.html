@@ -1,0 +1,384 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> config/webpack.js</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="AbstractCompose.html">AbstractCompose</a></li><li><a href="ApiRequestor.html">ApiRequestor</a></li><li><a href="BroadcastHandler.html">BroadcastHandler</a></li><li><a href="ChartDataManager.html">ChartDataManager</a></li><li><a href="ChartSymbol.html">ChartSymbol</a></li><li><a href="DeviceIdentifier.html">DeviceIdentifier</a></li><li><a href="DeviceInterface.html">DeviceInterface</a></li><li><a href="LocalStore.html">LocalStore</a></li><li><a href="MarketManager.html">MarketManager</a></li><li><a href="Publisher.html">Publisher</a></li><li><a href="Queue.html">Queue</a></li><li><a href="RangeManager.html">RangeManager</a></li><li><a href="Store.html">Store</a></li><li><a href="Subscriber.html">Subscriber</a></li><li><a href="Subscription.html">Subscription</a></li></ul><h3>Global</h3><ul><li><a href="global.html#allPublisherSubscribers">allPublisherSubscribers</a></li><li><a href="global.html#checkEverySecond">checkEverySecond</a></li><li><a href="global.html#checkIfHoliday">checkIfHoliday</a></li><li><a href="global.html#checkIfWeekDay">checkIfWeekDay</a></li><li><a href="global.html#checkIsDailyTicks">checkIsDailyTicks</a></li><li><a href="global.html#convertCandleToChartIQCandle">convertCandleToChartIQCandle</a></li><li><a href="global.html#convertCandleToTradingViewCandle">convertCandleToTradingViewCandle</a></li><li><a href="global.html#convertObjectToURLString">convertObjectToURLString</a></li><li><a href="global.html#convertToMarketHour">convertToMarketHour</a></li><li><a href="global.html#decodeDataFromLocalStore">decodeDataFromLocalStore</a></li><li><a href="global.html#EMPTY_CANDLE">EMPTY_CANDLE</a></li><li><a href="global.html#encodeDataForLocalStore">encodeDataForLocalStore</a></li><li><a href="global.html#extractHourMinFromRule">extractHourMinFromRule</a></li><li><a href="global.html#findLastCandleTime">findLastCandleTime</a></li><li><a href="global.html#getBasicWebpackConfigForChartIQ">getBasicWebpackConfigForChartIQ</a></li><li><a href="global.html#getBasicWebpackConfigForTradingView">getBasicWebpackConfigForTradingView</a></li><li><a href="global.html#getCurrentDateRule">getCurrentDateRule</a></li><li><a href="global.html#getHolidaySessionFromMarketRules">getHolidaySessionFromMarketRules</a></li><li><a href="global.html#getHolidaysStringFromMarketRules">getHolidaysStringFromMarketRules</a></li><li><a href="global.html#getSessionTimeFromCurrentRule">getSessionTimeFromCurrentRule</a></li><li><a href="global.html#getSubscribersList">getSubscribersList</a></li><li><a href="global.html#goBackPreviousDay">goBackPreviousDay</a></li><li><a href="global.html#invokeDeviceInterfaceInvokesamethodnameontheapplication-logicviatheJSInterface/MessageHandler'sAPI">invokeDeviceInterface
+Invokes a method name on the application-logic via the JSInterface / MessageHandler's API</a></li><li><a href="global.html#normalizeMinutes">normalizeMinutes</a></li><li><a href="global.html">RangeChangeToken</a></li><li><a href="global.html#saveLayout">saveLayout</a></li><li><a href="global.html#storeKeyword">storeKeyword</a></li><li><a href="global.html#subscribe">subscribe</a></li><li><a href="global.html#unsubscribe">unsubscribe</a></li><li><a href="global.html#updateBroadcastCandleWithRealTimeChartUpdates">updateBroadcastCandleWithRealTimeChartUpdates</a></li><li><a href="global.html#updateURLState">updateURLState</a></li><li><a href="global.html#updateUrlStateBasedOnCurrentSymbol">updateUrlStateBasedOnCurrentSymbol</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>config/webpack.js</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.getBasicWebpackConfigForTradingView = exports.getBasicWebpackConfigForChartIQ = void 0;
+/**
+ * Returns a function, which can be exported on webpack.config.js passing the environment of webpack
+ * Check for more details https://v4.webpack.js.org/configuration/configuration-types/#exporting-a-function
+ * @param {WebpackProps} props - props which will return a configuration for webpack to process
+ */
+function getBasicWebpackConfigForChartIQ(props) {
+    (environment) => {
+        environment = environment || {};
+        const isProduction = environment.prod || false, deploymentDirectory = props.path.resolve(props.sourceDirectory, "..", `${isProduction ? "dist" : "dev"}`);
+        return {
+            entry: {
+                /**
+                 * Specify the polyfill.js inside your source directory to add polyfill
+                 * @property {string} polyfill
+                 */
+                polyfill: props.path.join(props.sourceDirectory, "polyfill.js"),
+                app: props.path.join(props.sourceDirectory, "app.js"),
+            },
+            mode: isProduction ? "production" : "development",
+            module: {
+                rules: [
+                    {
+                        test: /\.js$/,
+                        use: [
+                            {
+                                loader: "babel-loader",
+                                options: {
+                                    presets: [
+                                        [
+                                            "@babel/preset-env",
+                                            {
+                                                targets: [
+                                                    "defaults",
+                                                    ">0.001%",
+                                                    "ie 11",
+                                                    "chrome >= 15",
+                                                ],
+                                                useBuiltIns: "entry",
+                                                corejs: 3.18,
+                                            },
+                                        ],
+                                    ],
+                                },
+                            },
+                        ],
+                    },
+                    {
+                        test: /\.(s)?css$/,
+                        use: [
+                            {
+                                loader: props.cssPlugin.loader,
+                                options: { publicPath: "css/" },
+                            },
+                            "css-loader",
+                            "sass-loader",
+                        ],
+                    },
+                    {
+                        test: /\.(jpg|gif|png|svg|cur)$/,
+                        use: [
+                            {
+                                loader: "file-loader",
+                                options: {
+                                    name: "[name].[ext]",
+                                    outputPath: function (url, resourcePath, context) {
+                                        return ((/images/.test(resourcePath) ? "" : "css") + "/img/" + url);
+                                    },
+                                    publicPath: "img/",
+                                },
+                            },
+                        ],
+                    },
+                ],
+            },
+            optimization: {
+                splitChunks: {
+                    chunks: "all",
+                    maxInitialRequests: Infinity,
+                    minSize: 1000,
+                    name: false,
+                    cacheGroups: {
+                        components: {
+                            name: "components",
+                            priority: 10,
+                            test: /[\\/]js[\\/]component(s|UI)[.]js/,
+                        },
+                        addons: {
+                            name: "addOns",
+                            priority: 20,
+                            test: /[\\/](plugins[\\/].+[.](js(on)?|html)|js[\\/]addOns[.]js)/,
+                        },
+                        thirdparty: {
+                            name: "thirdparty",
+                            priority: 30,
+                            test: /[\\/]node_modules|[\\/]thirdparty[\\/]/,
+                        },
+                        examples: {
+                            name: "examples",
+                            priority: 40,
+                            test: /[\\/]examples[\\/].+[.]js/,
+                        },
+                    },
+                },
+            },
+            output: {
+                chunkFilename: `js/chartiq-[name].${isProduction ? "[contentHash]" : "bundle"}.js`,
+                filename: `js/chartiq-core.${isProduction ? "[contentHash]" : "bundle"}.js`,
+                path: deploymentDirectory,
+            },
+            plugins: [
+                new props.terserPlugin({
+                    exclude: /node_modules|charting_library/,
+                    extractComments: false,
+                    terserOptions: {
+                        ecma: 5,
+                    },
+                }),
+                new props.copyPlugin({
+                    patterns: [
+                        {
+                            from: props.path.resolve(props.sourceDirectory, "js/thirdparty/html2canvas.min.js"),
+                            to: "js/thirdparty/html2canvas.min.js",
+                        },
+                    ],
+                }),
+                new props.cssPlugin({
+                    filename: `./css/chartiq.${isProduction ? "[contenthash]" : "bundle"}.css`,
+                }),
+                new props.htmlWebpackPlugin({
+                    template: props.path.resolve(props.sourceDirectory, "index.html"),
+                    favicon: props.path.resolve(props.sourceDirectory, "favicon.ico"),
+                }),
+                new props.htmlWebpackPartialsPlugin({
+                    path: props.path.resolve(props.sourceDirectory, "adv.ciq.template.html"),
+                    location: "cq-context",
+                }),
+                new props.webpack.DefinePlugin({
+                    __TREE_SHAKE__: JSON.stringify(isProduction),
+                    process: JSON.stringify({
+                        env: isProduction ? props.productionEnv : props.developmentEnv,
+                    }),
+                }),
+            ],
+            resolve: {
+                //specifying the chartiq's location for webpack to consider chartiq as npm package
+                alias: {
+                    chartiq: props.sourceDirectory,
+                },
+            },
+        };
+    };
+}
+exports.getBasicWebpackConfigForChartIQ = getBasicWebpackConfigForChartIQ;
+/**
+ * Returns a function, which will specify the webpack config for Trading-view's implementation using
+ * @param {WebpackProps} props - properties to return webpack configuration
+ * @returns {any}
+ */
+function getBasicWebpackConfigForTradingView(props) {
+    return (environment) => {
+        environment = environment || {};
+        const isProduction = environment.prod || false, deploymentDirectory = props.path.resolve(props.sourceDirectory, "..", `${isProduction ? "dist" : "dev"}`);
+        return {
+            entry: {
+                polyfill: props.path.resolve(props.sourceDirectory, "polyfill.ts"),
+                main: props.path.resolve(props.sourceDirectory, "index.ts"),
+            },
+            output: {
+                path: deploymentDirectory,
+                filename: `[name].[contentHash].js`,
+                chunkFilename: `[name].[contentHash].js`,
+            },
+            optimization: {
+                minimize: true,
+                splitChunks: {
+                    name: false,
+                    chunks: "all",
+                    minSize: 0.5e3,
+                    maxInitialRequests: Infinity,
+                    cacheGroups: {
+                        feeds: {
+                            name: "feed",
+                            test: props.path.resolve(props.sourceDirectory, "charts", "feeds"),
+                        },
+                        markets: {
+                            name: "market",
+                            test: props.path.resolve(props.sourceDirectory, "charts", "markets"),
+                        },
+                        utils: {
+                            name: "utils",
+                            test: props.path.resolve(props.sourceDirectory, "charts", "utils"),
+                        },
+                        thirdpary: {
+                            name: "thirdparty",
+                            test: /[\\/]node_modules/,
+                        },
+                    },
+                },
+                minimizer: [
+                    new props.htmlWebpackPlugin({
+                        template: props.path.resolve(props.sourceDirectory, "template.html"),
+                        favicon: props.path.resolve(props.sourceDirectory, "favicon.ico"),
+                    }),
+                    new props.cssPlugin({
+                        filename: `[name].[contentHash].css`,
+                    }),
+                    new props.terserPlugin({
+                        exclude: /node_modules|charting_library/,
+                        extractComments: false,
+                        terserOptions: {
+                            ecma: 5,
+                        },
+                    }),
+                    new props.copyPlugin({
+                        patterns: [
+                            {
+                                from: props.path.resolve(props.sourceDirectory, "charting_library"),
+                                to: props.path.resolve(deploymentDirectory, "charting_library"),
+                            },
+                            {
+                                from: props.path.resolve(props.sourceDirectory, "sw.js"),
+                                to: props.path.resolve(deploymentDirectory, "sw.js"),
+                            },
+                        ],
+                    }),
+                    new props.cleanWebpackPlugin(),
+                ],
+            },
+            plugins: [
+                new props.webpack.DefinePlugin({
+                    process: JSON.stringify({
+                        env: isProduction ? props.productionEnv : props.developmentEnv,
+                    }),
+                }),
+            ],
+            resolve: {
+                modules: ["node_modules", "charting_library"],
+                extensions: [".ts", ".js"],
+            },
+            module: {
+                rules: [
+                    {
+                        test: /\.ts$/,
+                        use: [
+                            {
+                                loader: "babel-loader",
+                                options: {
+                                    babelrc: true,
+                                },
+                            },
+                            { loader: "ts-loader" },
+                        ],
+                        exclude: /node_modules|charting_library/,
+                    },
+                    {
+                        test: /\.css$/,
+                        use: [props.cssPlugin.loader, "css-loader"],
+                    },
+                ],
+            },
+        };
+    };
+}
+exports.getBasicWebpackConfigForTradingView = getBasicWebpackConfigForTradingView;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+</body>
+</html>

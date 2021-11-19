@@ -1,0 +1,158 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> device-interface/device-identifier.d.ts</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="AbstractCompose.html">AbstractCompose</a></li><li><a href="ApiRequestor.html">ApiRequestor</a></li><li><a href="BroadcastHandler.html">BroadcastHandler</a></li><li><a href="ChartDataManager.html">ChartDataManager</a></li><li><a href="ChartSymbol.html">ChartSymbol</a></li><li><a href="DeviceInterface.html">DeviceInterface</a></li><li><a href="LocalStore.html">LocalStore</a></li><li><a href="MarketManager.html">MarketManager</a></li><li><a href="Publisher.html">Publisher</a></li><li><a href="Queue.html">Queue</a></li><li><a href="RangeManager.html">RangeManager</a></li><li><a href="Subscriber.html">Subscriber</a></li></ul><h3>Interfaces</h3><ul><li><a href="ApiRequestorProps.html">ApiRequestorProps</a></li><li><a href="BroadcastCandle.html">BroadcastCandle</a></li><li><a href="BroadcastQueue.html">BroadcastQueue</a></li><li><a href="Candle.html">Candle</a></li><li><a href="ChartIQCandle.html">ChartIQCandle</a></li><li><a href="ChartSymbolProps.html">ChartSymbolProps</a></li><li><a href="DataManagerProps.html">DataManagerProps</a></li><li><a href="DeviceInterfaceProps.html">DeviceInterfaceProps</a></li><li><a href="IApiRequestor.html">IApiRequestor</a></li><li><a href="IBroadcastHandler.html">IBroadcastHandler</a></li><li><a href="IChartDataManager.html">IChartDataManager</a></li><li><a href="IMarketManager.html">IMarketManager</a></li><li><a href="MarketManageProps.html">MarketManageProps</a></li><li><a href="MarketRule.html">MarketRule</a></li><li><a href="Range.html">Range</a></li><li><a href="RangeManagerProps.html">RangeManagerProps</a></li><li><a href="SessionTime.html">SessionTime</a></li><li><a href="StoreProps.html">StoreProps</a></li><li><a href="TradingViewCandle.html">TradingViewCandle</a></li><li><a href="ValidRule.html">ValidRule</a></li><li><a href="WebpackProps.html">WebpackProps</a></li></ul><h3>Global</h3><ul><li><a href="global.html#apiHandler">apiHandler</a></li><li><a href="global.html#broadcastCandle">broadcastCandle</a></li><li><a href="global.html#broadcastHandler">broadcastHandler</a></li><li><a href="global.html#deviceInterface">deviceInterface</a></li><li><a href="global.html#isAndroid">isAndroid</a></li><li><a href="global.html#isDesktop">isDesktop</a></li><li><a href="global.html#isHoliday">isHoliday</a></li><li><a href="global.html#isIos">isIos</a></li><li><a href="global.html#isMobile">isMobile</a></li><li><a href="global.html#isStreaming">isStreaming</a></li><li><a href="global.html#isWeekDay">isWeekDay</a></li><li><a href="global.html">RangeChangeToken</a></li><li><a href="global.html#rangeSize">rangeSize</a></li><li><a href="global.html#rules">rules</a></li><li><a href="global.html#symbol">symbol</a></li><li><a href="global.html#url">url</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>device-interface/device-identifier.d.ts</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Device-Identifier identifies the platform on which the application is running
+ * @class DeviceInterface
+ */
+export default class DeviceIdentifier {
+    /**
+     * UserAgent property from JS Native API of navigator
+     * @private
+     * @property {string} _userAgent;
+     */
+    private _userAgent;
+    /**
+     * Platform's property from JS Native API for navigator
+     * @private
+     * @property {string} _platform;
+     */
+    private _platform;
+    /**
+     * Returns a DeviceIdentifier's instance
+     */
+    constructor();
+    /**
+     * Returns if the platform is android or not
+     * @type {boolean}
+     */
+    get isAndroid(): boolean;
+    /**
+     * Returns if the platform is iOS / iPhone or not
+     * @type {boolean}
+     */
+    get isIos(): boolean;
+    /**
+     * Returns if the device is a mobile device or not
+     * @type {boolean}
+     */
+    get isMobile(): boolean;
+    /**
+     * Returns if the device is desktop / laptop device or not
+     * @type {boolean}
+     */
+    get isDesktop(): boolean;
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+</body>
+</html>

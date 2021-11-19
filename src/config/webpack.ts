@@ -27,7 +27,9 @@ interface WebpackProps {
   cleanWebpackPlugin: any;
 }
 /**
- * Returns a function, which can be exported on webpack.config.js passing the environment of webpack
+ * @category Configurations
+ * @method getBasicWebpackConfigForChartIQ
+ * @description Returns a function, which can be exported on webpack.config.js passing the environment of webpack
  * Check for more details https://v4.webpack.js.org/configuration/configuration-types/#exporting-a-function
  * @param {WebpackProps} props - props which will return a configuration for webpack to process
  */
@@ -202,7 +204,9 @@ export function getBasicWebpackConfigForChartIQ(props: WebpackProps): any {
   };
 }
 /**
- * Returns a function, which will specify the webpack config for Trading-view's implementation using
+ * @category Configurations
+ * @method getBasicWebpackConfigForTradingView
+ * @description Returns a function, which will specify the webpack config for Trading-view's implementation using
  * @param {WebpackProps} props - properties to return webpack configuration
  * @returns {any}
  */
