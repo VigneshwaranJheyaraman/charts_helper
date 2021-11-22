@@ -7,8 +7,9 @@ package-lock.json
 docs
 #configuration
 tsconfig.json
-jsdocs.json
+jsdoc.json
 .npmrc
+.env
 #licenese
 LICENSE
 #Changes log
