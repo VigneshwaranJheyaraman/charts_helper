@@ -1,4 +1,8 @@
-import { Candle } from "../feeds/utils";
+import {
+  Candle,
+  checkIsDailyTicks,
+  convertTimeFrameToSpanForChartIQ,
+} from "../feeds/utils";
 
 /**
  * @category Chart-IQ-Utils
@@ -73,4 +77,45 @@ export function convertCandleToChartIQCandle(candle: Candle): ChartIQCandle {
     Low: candle.low,
     Volume: candle.volume,
   };
+}
+/**
+ * @category Chart-IQ-Utils
+ * @method changeSymbol
+ * @param {any} stx - Chart Engine's object
+ * @param {string|object} newSymbol - the new symbol's name or symbol Object to change
+ * @param {string} resolution - the active resolution on chart
+ * @param {string} timeFrame - active time frame on chart
+ * @returns {Promise<any>}
+ */
+export function changeSymbol(
+  stx: any,
+  newSymbol: string | object,
+  resolution: string,
+  timeFrame: string
+): Promise<any> {
+  return new Promise((resolve, reject) => {
+    const isDailyTicks: boolean = checkIsDailyTicks(resolution),
+      span: object = convertTimeFrameToSpanForChartIQ(timeFrame);
+    try {
+      stx.loadChart(
+        newSymbol,
+        {
+          chart: stx.chart,
+          span: Object.assign({}, span, {
+            periodicity: {
+              interval: isDailyTicks ? 1 : parseInt(resolution, 10),
+              period: 1,
+              timeUnit: isDailyTicks ? "day" : "minute",
+            },
+          }),
+        },
+        (err: any) => {
+          if (err) reject(err);
+          resolve(newSymbol);
+        }
+      );
+    } catch (err) {
+      reject(err);
+    }
+  });
 }

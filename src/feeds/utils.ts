@@ -129,3 +129,59 @@ export function findLastCandleTime(
     return normalizedTime;
   }
 }
+/**
+ * @category Chart-IQ-Utils
+ * @method convertTimeFrameToSpanForChartIQ
+ * @description Method converts the time frame string into a span object which can be read by Chart-IQ
+ * @param {string} timeFrame - The active time frame
+ * @returns {object}
+ */
+export function convertTimeFrameToSpanForChartIQ(timeFrame: string): object {
+  switch (timeFrame.toLowerCase()) {
+    case "1d":
+      return {
+        base: "today",
+        multiplier: 1,
+      };
+    case "5d":
+      return {
+        base: "day",
+        multiplier: 5,
+      };
+    case "1m":
+      return {
+        base: "month",
+        multiplier: 1,
+      };
+    case "3m":
+      return {
+        base: "month",
+        multiplier: 3,
+      };
+    case "6m":
+      return {
+        base: "month",
+        multiplier: 6,
+      };
+    case "1y":
+      return {
+        base: "year",
+        multiplier: 1,
+      };
+    case "5y":
+      return {
+        base: "year",
+        multiplier: 5,
+      };
+    case "ytd":
+      return {
+        base: "YTD",
+        multiplier: 1,
+      };
+    default:
+      return {
+        base: "all",
+        multiplier: 1,
+      };
+  }
+}

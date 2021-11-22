@@ -13,6 +13,7 @@ import {
   convertCandleToChartIQCandle,
   ChartIQCandle,
   updateBroadcastCandleWithRealTimeChartUpdates,
+  changeSymbol,
 } from "./utils/chartiq";
 import { updateURLState, convertObjectToURLString } from "./utils/url";
 import {
@@ -37,6 +38,7 @@ export {
   updateBroadcastCandleWithRealTimeChartUpdates,
   ChartIQCandle,
   convertCandleToChartIQCandle,
+  changeSymbol,
 };
 //URL's related utilities
 export { updateURLState, convertObjectToURLString };
