@@ -99,6 +99,7 @@ import { updateUrlStateBasedOnCurrentSymbol } from "./utils";
  * @property {string|number} symbolId - unique Id for the symbol
  * @property {string|number} [exchangeId] - [optional] unique identifier for Exchange
  * @property {boolean} [disableURLEncoding=false] - [optional] boolean to disable encoding on URL
+ * @property {any} [symbolObject] - [optional] symbol object which can contain extra symbol details
  */
 export interface ChartSymbolProps {
   symbolName: string;
@@ -108,6 +109,7 @@ export interface ChartSymbolProps {
   symbolId: string | number;
   exchangeId?: string | number;
   disableURLEncoding?: boolean;
+  symbolObject?: any;
 }
 /**
  * ChartSymbol's API
