@@ -2,3 +2,8 @@
 - Initial release
 - Basic configuration API's added
 - Testing [unit testing] done
+## [1.0.1] - 23 Nov 2021
+- Bug fixes for ChartDataManager constructor props
+- ApiRequestor defaultEndDate added
+- ChartSymbol symbolObject props added
+- MarketManager URLFactory definition updated
