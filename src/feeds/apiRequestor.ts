@@ -32,7 +32,7 @@ interface IApiRequestor {
    * is it for initial data of for historic data so the range can be generated as such
    * @param {HeadersInit|undefined} [headers=undefined] - The optional paramter which will be passed as the headers for the request.
    * @param {string} [method="POST"] - The optional parameter to specify the method of API request
-   * @returns {Promise<any>}
+   * @returns {Promise<Response>}
    */
   request(
     resolution: string,
@@ -40,7 +40,7 @@ interface IApiRequestor {
     isRequestForInitialData: boolean,
     headers: HeadersInit | undefined,
     method: string
-  ): Promise<any>;
+  ): Promise<Response>;
 }
 /**
  * @class
@@ -65,11 +65,18 @@ export default class ApiRequestor
    * @property {number} requestCount
    */
   requestCount: number = 0;
+  /**
+   * Default End for Range manager's end Date selection
+   * @static
+   * @property {Date} defaultEndDate
+   */
+  static defaultEndDate: Date = new Date();
   constructor(props: ApiRequestorProps) {
     super(props);
     this.__rangeManager = new RangeManager({
       rules: props.rules,
       rangeSize: props.rangeSize,
+      defEndDate: ApiRequestor.defaultEndDate,
     });
 
     this.generateRequestRange = this.generateRequestRange.bind(this);
@@ -107,7 +114,7 @@ export default class ApiRequestor
    * @param {boolean} isRequestForInitialData
    * @param {HeadersInit|undefined} headers
    * @param {string} method
-   * @returns {Promise<any>}
+   * @returns {Promise<Response>}
    */
   request(
     resolution: string,
@@ -115,7 +122,7 @@ export default class ApiRequestor
     isRequestForInitialData: boolean,
     headers: HeadersInit | undefined,
     method: string
-  ): Promise<any> {
+  ): Promise<Response> {
     this.requestCount++;
     if (isRequestForInitialData) {
       this.__rangeManager.initRange(resolution);

@@ -27,6 +27,7 @@ interface RequestRange {
  */
 export interface RangeManagerProps extends MarketManageProps {
   rangeSize?: number;
+  defEndDate?: Date;
 }
 /**
  * @classdesc Manages the range and provides API to generate range for specified resolution considering all market scenario
@@ -52,9 +53,15 @@ export default class RangeManager extends AbstractCompose<RangeManagerProps> {
    * @property {string} RangeChangeToken
    */
   static RangeChangeToken: string = "RANGE_CHANGE_TOKEN";
+  /**
+   * Default End date to start generating initial request
+   * @private
+   * @member {Date} __defaultEndDate
+   */
+  private __defaultEndDate: Date;
   constructor(props: RangeManagerProps) {
     super(props);
-
+    this.__defaultEndDate = props.defEndDate || new Date();
     this.__requestRange = {};
     this.__marketManager = new MarketManager({
       rules: props.rules,
@@ -103,7 +110,7 @@ export default class RangeManager extends AbstractCompose<RangeManagerProps> {
     if (resolution in this.__requestRange) {
       newRange = this.__requestRange[resolution];
     }
-    let toDate: Date = newRange.from || new Date(),
+    let toDate: Date = newRange.from || this.__defaultEndDate,
       fromDate: Date | null = newRange.from;
     if (!fromDate) {
       fromDate = this.__marketManager.goBackANumberOfTicks(

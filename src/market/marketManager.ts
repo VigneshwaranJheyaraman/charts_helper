@@ -16,10 +16,10 @@ import {
 /**
  * The function which should return the list of market rules based on the active symbol
  * @callback RulesFactory
- * @param {ChartSymbol} symbol
+ * @param {ChartSymbol} [symbol] - [optional] symbol passed
  * @returns {Array<MarketRule>}
  */
-export declare type RulesFactory = (symbol: ChartSymbol) => Array<MarketRule>;
+export declare type RulesFactory = (symbol?: ChartSymbol) => Array<MarketRule>;
 /**
  * The properties which will be passed to MarketManagerProps
  * @interface

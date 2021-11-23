@@ -21,9 +21,10 @@ import {
   getBasicWebpackConfigForTradingView,
 } from "./config/webpack";
 import MarketRule from "./market/rules";
+import ApiRequestor from "./feeds/apiRequestor";
 
 //Main exports
-export { ChartDataManager, LocalStore, Queue, MarketRule };
+export { ChartDataManager, LocalStore, Queue, MarketRule, ApiRequestor };
 //Trading view utils export
 export {
   getHolidaysStringFromMarketRules,

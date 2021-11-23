@@ -4,7 +4,6 @@ import DeviceInterface, {
 import ApiRequestor, { ApiRequestorProps } from "../feeds/apiRequestor";
 import BroadcastHandler, { BroadcastCandle } from "../feeds/broadcast-handler";
 import { Candle } from "../feeds/utils";
-import { MarketManageProps } from "../market/marketManager";
 import ChartSymbol, { ChartSymbolProps } from "../symbol/symbol";
 import AbstractCompose from "../utils/abstract-composer";
 import Queue from "../utils/queue";
@@ -14,12 +13,10 @@ import Queue from "../utils/queue";
  * @interface DataManagerProps
  * @property {ChartSymbolProps} symbol - The symbol related basic properties to be passed
  * @property {ApiRequestorProps} api - The constructor properties that has to be passed to initialize APIRequestor
- * @property {MarketManageProps} market - The rules which will be made use by MarketManager to handle market scenario
  */
 interface DataManagerProps {
   symbol: ChartSymbolProps;
   api: ApiRequestorProps;
-  market: MarketManageProps;
   deviceInterface: DeviceInterfaceProps;
 }
 /**
@@ -36,14 +33,14 @@ interface IChartDataManager {
    * @param {string} requestBody - The stringified JSON object which will be posted to the API using the fetch API, must contain {fromDate & toDate} range.
    * @param {HeadersInit|undefined} [headers] - The optional parameter which contains the header object which will sent across the API request headers.
    * @param {string} [method="POST"] - Optional paramter which defaults to POST
-   * @returns {Promise<any>} - Fetch API promise is returned.
+   * @returns {Promise<Response>} - Fetch API promise is returned.
    */
   getInitialData(
     resolution: string,
     requestBody: string,
     headers: HeadersInit | undefined,
     method: string
-  ): Promise<any>;
+  ): Promise<Response>;
   /**
    * Tries to fetch the initial Data i.e., the set of chart candles from a API Data source,
    * which will request for the data candles from API for the historic/ previous date range
@@ -53,14 +50,14 @@ interface IChartDataManager {
    * @param {string} requestBody - The stringified JSON object which will be posted to the API using the fetch API, must contain {fromDate & toDate} range.
    * @param {HeadersInit|undefined} [headers] - The optional parameter which contains the header object which will sent across the API request headers.
    * @param {string} [method="POST"] - Optional paramter which defaults to POST
-   * @returns {Promise<any>} - Fetch API promise is returned.
+   * @returns {Promise<Response>} - Fetch API promise is returned.
    */
   getHistoricData(
     resolution: string,
     requestBody: string,
     headers: HeadersInit | undefined,
     method: string
-  ): Promise<any>;
+  ): Promise<Response>;
   /**
    * Updates the broadcast or real time candles on chart, with performing the streaming logic to
    * manipulate the OHLCV values
@@ -193,14 +190,14 @@ export default class ChartDataManager
    * @param {string} requestBody - The stringified JSON object which will be posted to the API using the fetch API, must contain {fromDate & toDate} range.
    * @param {HeadersInit|undefined} [headers] - The optional parameter which contains the header object which will sent across the API request headers.
    * @param {string} [method="POST"] - Optional paramter which defaults to POST
-   * @returns {Promise<any>} - Fetch API promise is returned.
+   * @returns {Promise<Response>} - Fetch API promise is returned.
    */
   getInitialData(
     resolution: string,
     requestBody: string,
     headers: HeadersInit | undefined = undefined,
     method: string = "POST"
-  ): Promise<any> {
+  ): Promise<Response> {
     this.__updateStreamingStatus(false);
     return this.__apiRequestor
       .request(resolution, requestBody, true, headers, method)
@@ -213,13 +210,13 @@ export default class ChartDataManager
    * @memberof ChartDataManager
    * @description Tries to fetch the initial Data i.e., the set of chart candles from a API Data source,
    * which will request for the data candles from API for the historic/ previous date range
-   * @method getInitialData
+   * @method getHistoricData
    * @param {string} resolution - The resolution which needs to be requested either 1,2,3,etc., mins or 1D, 1W or 1M
    * D|W|M - specifies the Day|Week|Month;
    * @param {string} requestBody - The stringified JSON object which will be posted to the API using the fetch API, must contain {fromDate & toDate} range.
    * @param {HeadersInit|undefined} [headers] - The optional parameter which contains the header object which will sent across the API request headers.
    * @param {string} [method="POST"] - Optional paramter which defaults to POST
-   * @returns {Promise<any>} - Fetch API promise is returned.
+   * @returns {Promise<Response>} - Fetch API promise is returned.
    */
   getHistoricData(
     resolution: string,
