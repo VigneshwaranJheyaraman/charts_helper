@@ -7,3 +7,10 @@
 - ApiRequestor defaultEndDate added
 - ChartSymbol symbolObject props added
 - MarketManager URLFactory definition updated
+## [1.0.2] - 24 Nov 2021
+- checkWithinMarketOpenTime and checkWithinMarketCloseTime function added
+- MarketRule updated with dayofweek
+- Docs updated
+- convertTimeFrameToSpanObjectForChartIQ added to utils/chartiq
+- marketManager isMarketOpen logic updated
+- convertToMarketHour logic updated to avoid recrusion
