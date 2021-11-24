@@ -38,10 +38,10 @@ export function checkIfWeekDay(
   dateToCheck = new Date(dateToCheck);
   let filteredWeekDayRule: Array<MarketRule> = rules
       .filter((rule: MarketRule) => {
-        return rule.dayOfWeek && rule.open && rule.close;
+        return rule.dayofweek && rule.open && rule.close;
       })
       .filter((rule: MarketRule) => {
-        return rule.dayOfWeek === dateToCheck.getDay();
+        return rule.dayofweek === dateToCheck.getDay();
       }),
     isValid: boolean = filteredWeekDayRule.length !== 0;
   return {
@@ -154,20 +154,18 @@ export function convertToMarketHour(this: MarketManager, date: Date): Date {
   } else {
     let defaultRule: MarketRule = this.rules[0],
       currentRule: MarketRule = getCurrentDateRule(date, this.rules),
-      [currentMin, currentHr] = [date.getMinutes(), date.getHours()];
+      currentHrMin: SessionTime = {
+        hr: date.getHours(),
+        min: date.getMinutes(),
+      };
     if (currentRule.open && currentRule.close) {
       let openHrMin: SessionTime = extractHourMinFromRule(currentRule.open),
         closeHrMin: SessionTime = extractHourMinFromRule(currentRule.close);
-      if (
-        currentHr < openHrMin.hr ||
-        (currentHr === openHrMin.hr && currentMin < openHrMin.min)
-      ) {
-        date.setHours(closeHrMin.hr, closeHrMin.min - 1, 0, 0);
-        return convertToMarketHour.call(this, goBackPreviousDay(date));
-      } else if (
-        currentHr > closeHrMin.hr ||
-        (currentHr === closeHrMin.hr && currentMin >= closeHrMin.min)
-      ) {
+      if (!checkWithinMarketOpenTime(openHrMin, currentHrMin)) {
+        date = goBackPreviousDay(date);
+        date.setHours(closeHrMin.hr, closeHrMin.min, 0, 0);
+        return new Date(date);
+      } else if (!checkWithinMarketCloseTime(closeHrMin, currentHrMin)) {
         date.setHours(closeHrMin.hr, closeHrMin.min, 0, 0);
       }
     } else {
@@ -178,17 +176,12 @@ export function convertToMarketHour(this: MarketManager, date: Date): Date {
           defaultCloseHrMin: SessionTime = extractHourMinFromRule(
             defaultRule.close
           );
-        if (
-          currentHr < defaultOpenHrMin.hr ||
-          (currentHr === defaultOpenHrMin.hr &&
-            currentMin < defaultOpenHrMin.min)
-        ) {
-          date.setHours(defaultCloseHrMin.hr, defaultCloseHrMin.min - 1, 0, 0);
-          return convertToMarketHour.call(this, goBackPreviousDay(date));
+        if (!checkWithinMarketOpenTime(defaultOpenHrMin, currentHrMin)) {
+          date = goBackPreviousDay(date);
+          date.setHours(defaultCloseHrMin.hr, defaultCloseHrMin.min, 0, 0);
+          return new Date(date);
         } else if (
-          currentHr > defaultCloseHrMin.hr ||
-          (currentHr === defaultCloseHrMin.hr &&
-            currentMin >= defaultCloseHrMin.min)
+          !checkWithinMarketCloseTime(defaultCloseHrMin, currentHrMin)
         ) {
           date.setHours(defaultCloseHrMin.hr, defaultCloseHrMin.min, 0, 0);
         }
@@ -197,4 +190,36 @@ export function convertToMarketHour(this: MarketManager, date: Date): Date {
   }
 
   return new Date(date);
+}
+/**
+ * @method checkWithinMarketOpenTime
+ * @description Checks whether the date is within the market rule and not beyond the open time
+ * @param {SessionTime} openHrMin - The open session time for the specified date
+ * @param {SessionTime} timeToCheck - The session time to check with open session time
+ * @returns {boolean}
+ */
+export function checkWithinMarketOpenTime(
+  openHrMin: SessionTime,
+  timeToCheck: SessionTime
+): boolean {
+  return (
+    timeToCheck.hr > openHrMin.hr ||
+    (timeToCheck.hr === openHrMin.hr && timeToCheck.min >= openHrMin.min)
+  );
+}
+/**
+ * @method checkWithinMarketCloseTime
+ * @description Checks whether the specified time is within the market close time
+ * @param {SessionTime} closeHrMin - market's close session time
+ * @param {SessionTime} timeToCheck - time to compare with market's closing time
+ * @returns {boolean}
+ */
+export function checkWithinMarketCloseTime(
+  closeHrMin: SessionTime,
+  timeToCheck: SessionTime
+): boolean {
+  return (
+    timeToCheck.hr < closeHrMin.hr ||
+    (timeToCheck.hr === closeHrMin.hr && timeToCheck.min <= closeHrMin.min)
+  );
 }

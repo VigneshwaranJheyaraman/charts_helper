@@ -14,6 +14,7 @@ import {
   ChartIQCandle,
   updateBroadcastCandleWithRealTimeChartUpdates,
   changeSymbol,
+  convertTimeFrameToSpanForChartIQ,
 } from "./utils/chartiq";
 import { updateURLState, convertObjectToURLString } from "./utils/url";
 import {
@@ -40,6 +41,7 @@ export {
   ChartIQCandle,
   convertCandleToChartIQCandle,
   changeSymbol,
+  convertTimeFrameToSpanForChartIQ,
 };
 //URL's related utilities
 export { updateURLState, convertObjectToURLString };

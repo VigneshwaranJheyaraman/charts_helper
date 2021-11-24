@@ -26,7 +26,7 @@ export function getHolidaySessionFromMarketRules(
   rules: Array<MarketRule>
 ): string {
   return rules
-    .filter((rule: MarketRule) => !rule.dayOfWeek)
+    .filter((rule: MarketRule) => !rule.dayofweek)
     .filter((rule: MarketRule) => !rule.name)
     .filter((rule: MarketRule) => rule.open && rule.close)
     .map(

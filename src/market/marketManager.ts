@@ -7,6 +7,8 @@ import MarketRule from "./rules";
 import {
   checkIfHoliday,
   checkIfWeekDay,
+  checkWithinMarketCloseTime,
+  checkWithinMarketOpenTime,
   convertToMarketHour,
   extractHourMinFromRule,
   getCurrentDateRule,
@@ -188,16 +190,16 @@ export default class MarketManager
         let openHrMin: SessionTime = extractHourMinFromRule(
             currentDayRule.open
           ),
-          [currentMinute, currentHour] = [date.getMinutes(), date.getHours()],
+          currentHrMin: SessionTime = {
+            min: date.getMinutes(),
+            hr: date.getHours(),
+          },
           closeHrMin: SessionTime = extractHourMinFromRule(
             currentDayRule.close
           );
         return (
-          (currentHour > openHrMin.hr ||
-            (currentHour === openHrMin.hr &&
-              currentMinute >= openHrMin.min)) /**market has started */ &&
-          (currentHour < closeHrMin.hr ||
-            (currentHour === closeHrMin.hr && currentMinute < closeHrMin.min))
+          checkWithinMarketOpenTime(openHrMin, currentHrMin) &&
+          checkWithinMarketCloseTime(closeHrMin, currentHrMin)
         );
       }
     }
