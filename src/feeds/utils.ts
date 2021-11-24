@@ -48,7 +48,7 @@ export interface Candle {
  * @returns {boolean}
  */
 export function checkIsDailyTicks(resolution: string): boolean {
-  return /[DWM]/.test(resolution);
+  return /[DWM]/i.test(resolution);
 }
 /**
  * @category Feed-Utils

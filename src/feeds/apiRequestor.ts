@@ -26,18 +26,14 @@ interface IApiRequestor {
   /**
    * @method
    * This raises a HTTP-REST API request to the url
-   * @param {string} resolution - the expected resolution for which chart has to be plotted
    * @param {string} requestBodyOrURLQuery - The stringiied JSON object which will added to the body or URL Query attached alongside URL for GET request
-   * @param {boolean} isRequestForInitialData - The boolean value stating the nature of request
    * is it for initial data of for historic data so the range can be generated as such
    * @param {HeadersInit|undefined} [headers=undefined] - The optional paramter which will be passed as the headers for the request.
    * @param {string} [method="POST"] - The optional parameter to specify the method of API request
    * @returns {Promise<Response>}
    */
   request(
-    resolution: string,
     requestBodyOrURLQuery: string,
-    isRequestForInitialData: boolean,
     headers: HeadersInit | undefined,
     method: string
   ): Promise<Response>;
@@ -109,24 +105,17 @@ export default class ApiRequestor
    * @memberof ApiRequestor
    * @override
    * @description The request is generated as a HTTP REST request to the server
-   * @param {string} resolution
    * @param {string} requestBodyOrURLQuery
-   * @param {boolean} isRequestForInitialData
    * @param {HeadersInit|undefined} headers
    * @param {string} method
    * @returns {Promise<Response>}
    */
   request(
-    resolution: string,
     requestBodyOrURLQuery: string,
-    isRequestForInitialData: boolean,
     headers: HeadersInit | undefined,
     method: string
   ): Promise<Response> {
     this.requestCount++;
-    if (isRequestForInitialData) {
-      this.__rangeManager.initRange(resolution);
-    }
     return fetch(
       this.url +
         `${method.toUpperCase() === "GET" ? requestBodyOrURLQuery : ""}`,

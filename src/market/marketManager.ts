@@ -172,8 +172,8 @@ export default class MarketManager
    */
   isMarketDay(date: Date = new Date()): boolean {
     return (
-      checkIfWeekDay(date, this.rules) &&
-      !checkIfHoliday(date, this.rules, true)
+      checkIfWeekDay(date, this.rules).isValid &&
+      !checkIfHoliday(date, this.rules, true).isValid
     );
   }
   /**

@@ -168,3 +168,24 @@ export function convertTimeFrameToSpanForChartIQ(timeFrame: string): object {
       return convertTimeFrameToSpanForChartIQ("1d");
   }
 }
+/**
+ * @member convertPeriodAndIntervalToResolution
+ * @description Acts like the Resolution Factory for Chart-IQ implementation returning the resolution
+ * @param {any} stx - Chart Engine's object
+ * @returns {string}
+ */
+export function convertPeriodAndIntervalToResolution(stx: any): string {
+  stx = { ...stx, layout: stx.layout || {} };
+  if (stx.layout.interval) {
+    if (typeof stx.layout.interval === "string") {
+      return (
+        (stx.layout.periodicity || 1) + (stx.layout.interval || "").charAt(0)
+      );
+    } else {
+      return (
+        (stx.layout.periodicity || 1) * (stx.layout.interval || 1)
+      ).toString();
+    }
+  }
+  return "";
+}

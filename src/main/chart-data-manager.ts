@@ -8,6 +8,11 @@ import ChartSymbol, { ChartSymbolProps } from "../symbol/symbol";
 import AbstractCompose from "../utils/abstract-composer";
 import Queue from "../utils/queue";
 
+/**
+ * @callback ResolutionFactory
+ * @returns {string}
+ */
+declare type ResolutionFactory = () => string;
 /**!
  * This is the props which is passed along the constructor of ChartDataManager
  * @interface DataManagerProps
@@ -18,6 +23,7 @@ interface DataManagerProps {
   symbol: ChartSymbolProps;
   api: ApiRequestorProps;
   deviceInterface: DeviceInterfaceProps;
+  resolutionFactory: ResolutionFactory;
 }
 /**
  * All api methods with public access for ChartDataManager interface
@@ -45,15 +51,12 @@ interface IChartDataManager {
    * Tries to fetch the initial Data i.e., the set of chart candles from a API Data source,
    * which will request for the data candles from API for the historic/ previous date range
    * @method getInitialData
-   * @param {string} resolution - The resolution which needs to be requested either 1,2,3,etc., mins or 1D, 1W or 1M
-   * D|W|M - specifies the Day|Week|Month;
    * @param {string} requestBody - The stringified JSON object which will be posted to the API using the fetch API, must contain {fromDate & toDate} range.
    * @param {HeadersInit|undefined} [headers] - The optional parameter which contains the header object which will sent across the API request headers.
    * @param {string} [method="POST"] - Optional paramter which defaults to POST
    * @returns {Promise<Response>} - Fetch API promise is returned.
    */
   getHistoricData(
-    resolution: string,
     requestBody: string,
     headers: HeadersInit | undefined,
     method: string
@@ -115,12 +118,14 @@ export default class ChartDataManager
   private __isStreaming: boolean;
   private __broadcastCandleQueue: Queue<BroadcastQueue>;
   private __deviceInterface: DeviceInterface;
+  private __resolutionFactory: ResolutionFactory;
   constructor(props: DataManagerProps) {
     super(props);
     this.__activeSymbol = new ChartSymbol(props.symbol);
     this.__apiRequestor = new ApiRequestor(props.api);
     this.__broadcastHandler = new BroadcastHandler();
     this.__deviceInterface = new DeviceInterface(props.deviceInterface);
+    this.__resolutionFactory = props.resolutionFactory;
     this.__isStreaming = false;
     this.__broadcastCandleQueue = new Queue<BroadcastQueue>();
 
@@ -130,6 +135,7 @@ export default class ChartDataManager
     this.emptyBroadcastQueue = this.emptyBroadcastQueue.bind(this);
     this.updatePendingBroadcastCandles =
       this.updatePendingBroadcastCandles.bind(this);
+    this.updateStreamingStatus = this.updateStreamingStatus.bind(this);
   }
   /**
    * Returns the active symbol on Chart
@@ -172,12 +178,19 @@ export default class ChartDataManager
     return this.__deviceInterface;
   }
   /**
-   * Updates the status of isStreaming
-   * @private
-   * @method __updateStreamingStatus
-   * @param {boolean} isStreaming - The value to be updated
+   * Return's the active resolution based on the resolution factory
+   * @memberof ChartDataManager
+   * @member {string} activeResolution
    */
-  private __updateStreamingStatus(isStreaming: boolean): void {
+  get activeResolution(): string {
+    return this.__resolutionFactory();
+  }
+  /**
+   * @description Updates the status of isStreaming
+   * @method __updateStreamingStatus
+   * @param {boolean} isStreaming - The true if want to start streaming false if want to stop streaming
+   */
+  updateStreamingStatus(isStreaming: boolean): void {
     this.__isStreaming = isStreaming;
   }
   /**
@@ -185,8 +198,7 @@ export default class ChartDataManager
    * @description Tries to fetch the initial Data i.e., the set of chart candles from a API Data source,
    * which will initially fill up the visible range on charts
    * @method getInitialData
-   * @param {string} resolution - The resolution which needs to be requested either 1,2,3,etc., mins or 1D, 1W or 1M
-   * D|W|M - specifies the Day|Week|Month;
+   * @param {string} resolution - The resolution which needs to be requested either 1,2,3,etc., mins or 1D, 1W or 1M D|W|M - specifies the Day|Week|Month;
    * @param {string} requestBody - The stringified JSON object which will be posted to the API using the fetch API, must contain {fromDate & toDate} range.
    * @param {HeadersInit|undefined} [headers] - The optional parameter which contains the header object which will sent across the API request headers.
    * @param {string} [method="POST"] - Optional paramter which defaults to POST
@@ -198,39 +210,27 @@ export default class ChartDataManager
     headers: HeadersInit | undefined = undefined,
     method: string = "POST"
   ): Promise<Response> {
-    this.__updateStreamingStatus(false);
-    return this.__apiRequestor
-      .request(resolution, requestBody, true, headers, method)
-      .then((res: Response) => {
-        this.__updateStreamingStatus(true);
-        return res;
-      });
+    if (this.activeResolution === resolution) {
+      this.updateStreamingStatus(false);
+    }
+    return this.__apiRequestor.request(requestBody, headers, method);
   }
   /**
    * @memberof ChartDataManager
    * @description Tries to fetch the initial Data i.e., the set of chart candles from a API Data source,
    * which will request for the data candles from API for the historic/ previous date range
    * @method getHistoricData
-   * @param {string} resolution - The resolution which needs to be requested either 1,2,3,etc., mins or 1D, 1W or 1M
-   * D|W|M - specifies the Day|Week|Month;
    * @param {string} requestBody - The stringified JSON object which will be posted to the API using the fetch API, must contain {fromDate & toDate} range.
    * @param {HeadersInit|undefined} [headers] - The optional parameter which contains the header object which will sent across the API request headers.
    * @param {string} [method="POST"] - Optional paramter which defaults to POST
    * @returns {Promise<Response>} - Fetch API promise is returned.
    */
   getHistoricData(
-    resolution: string,
     requestBody: string,
     headers: HeadersInit | undefined = undefined,
     method: string = "POST"
   ): Promise<any> {
-    return this.__apiRequestor.request(
-      resolution,
-      requestBody,
-      false,
-      headers,
-      method
-    );
+    return this.__apiRequestor.request(requestBody, headers, method);
   }
   /**
    * @memberof ChartDataManager
