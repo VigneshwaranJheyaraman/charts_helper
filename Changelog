@@ -14,3 +14,11 @@
 - convertTimeFrameToSpanObjectForChartIQ added to utils/chartiq
 - marketManager isMarketOpen logic updated
 - convertToMarketHour logic updated to avoid recrusion
+- marketManager isMarketDay logic updated
+- APirequestor request method updated
+- ChartDataManager constructor props updated
+- ChartDataManager updateStreamingStatus function related updated
+- ChartDataManager getINitialData updateStreamingStatus logic removed on response
+- MarketManager updated on goBackNumberOfTicks function to get a valid date before converting to market convertToMarketHour
+- MarketManager daily ticks goBackNumberOfTicks updated with logic to check for previous day if the date is market day and go back
+- Range manger update for getRange logic to update fromDate as always to null

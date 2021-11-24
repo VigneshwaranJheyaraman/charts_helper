@@ -111,7 +111,7 @@ export default class RangeManager extends AbstractCompose<RangeManagerProps> {
       newRange = this.__requestRange[resolution];
     }
     let toDate: Date = newRange.from || this.__defaultEndDate,
-      fromDate: Date | null = newRange.from;
+      fromDate: Date | null = null;
     if (!fromDate) {
       fromDate = this.__marketManager.goBackANumberOfTicks(
         toDate,

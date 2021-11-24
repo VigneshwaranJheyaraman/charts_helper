@@ -223,7 +223,11 @@ export default class MarketManager
     while (numberOfTicks > 0) {
       if (checkIsDailyTicks(resolution)) {
         //daily ticks
-        fromDate = this.getValidMarketDay(fromDate);
+        if (this.isMarketDay(fromDate)) {
+          fromDate = this.getValidMarketDay(goBackPreviousDay(fromDate));
+        } else {
+          fromDate = this.getValidMarketDay(fromDate);
+        }
         numberOfTicks--;
       } else {
         //minute ticks
@@ -232,7 +236,9 @@ export default class MarketManager
         if (this.isMarketOpen(fromDate)) {
           fromDate = new Date(fromDate.getTime() - timeOffset);
         } else {
-          fromDate = convertToMarketHour.call(this, fromDate);
+          fromDate = this.getValidMarketDay(
+            convertToMarketHour.call(this, fromDate)
+          );
         }
         numberOfTicks--;
       }
