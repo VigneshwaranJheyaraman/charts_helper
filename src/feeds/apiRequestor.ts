@@ -95,9 +95,13 @@ export default class ApiRequestor
    * @method generateRequestRange
    * @description Generates the request range which will return the from and to date for current resolution
    * @param {string} resolution - the resolution for which the range has to be identified
+   * @param {boolean} isFirstRequest - Initialize the request range if this is the initial request
    * @returns {Range}
    */
-  generateRequestRange(resolution: string): Range {
+  generateRequestRange(resolution: string, isFirstRequest: boolean): Range {
+    if(isFirstRequest) {
+      this.__rangeManager.initRange(resolution);
+    }
     return this.__rangeManager.getRange(resolution);
   }
   /**
