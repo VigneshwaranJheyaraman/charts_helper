@@ -22,3 +22,4 @@
 - MarketManager updated on goBackNumberOfTicks function to get a valid date before converting to market convertToMarketHour
 - MarketManager daily ticks goBackNumberOfTicks updated with logic to check for previous day if the date is market day and go back
 - Range manger update for getRange logic to update fromDate as always to null
+- RangeManager generateRequestRange extra param added isFirstRequest to initialize the range for resolution
