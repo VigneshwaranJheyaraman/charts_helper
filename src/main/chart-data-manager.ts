@@ -67,11 +67,13 @@ interface IChartDataManager {
    * @method updateRealTime
    * @param {string} resolution - The resolution which is currently active on chart
    * @param {BroadcastCandle} realTimeBroadcastCandle - The broadcast candle with only Close/LTP and the Full-Traded-Volume is enough also will accept other properties like Open, High and Low
+   * @param {string} [ticker] - Optional ticker to update the broadcast value
    * @returns {Candle|null}
    */
   updateRealTime(
     resolution: string,
-    realTimeBroadcastCandle: BroadcastCandle
+    realTimeBroadcastCandle: BroadcastCandle,
+    ticker?: string
   ): Candle | null;
   /**
    * Returns an array of candles which will be contain all the candles that where received when
@@ -84,8 +86,9 @@ interface IChartDataManager {
    * @method updatePendingBroadcastCandles
    * Will automatically update the pending candles which are available on Queue based on the
    * active symbol selected and empties the queue
+   * @returns {Array<Candle|null>}
    */
-  updatePendingBroadcastCandles(): void;
+  updatePendingBroadcastCandles(): Array<Candle|null>;
 }
 
 /**
@@ -239,13 +242,17 @@ export default class ChartDataManager
    * @method updateRealTime
    * @param {string} resolution - The resolution which is currently active on chart
    * @param {BroadcastCandle} realTimeBroadcastCandle - The broadcast candle with only Close/LTP and the Full-Traded-Volume is enough also will accept other properties like Open, High and Low
+
+   * @param {string} [ticker=''] - [optional] the ticker of the active symbol
    * @returns {Candle|null}
    */
   updateRealTime(
     resolution: string,
-    realTimeBroadcastCandle: BroadcastCandle
+    realTimeBroadcastCandle: BroadcastCandle,
+    ticker: string=''
   ): Candle | null {
-    if (this.__isStreaming) {
+    ticker = ticker || this.symbol.toString();
+    if (this.__isStreaming && ticker === this.symbol.toString()) {
       return this.__broadcastHandler.stream(
         realTimeBroadcastCandle,
         resolution
@@ -274,10 +281,13 @@ export default class ChartDataManager
    * @method updatePendingBroadcastCandles
    * @description Will automatically update the pending candles which are available on Queue based on the
    * active symbol selected and empties the queue
+   * @returns {Array<Candle>}
    */
-  updatePendingBroadcastCandles(): void {
-    this.emptyBroadcastQueue().forEach((queueItem: BroadcastQueue) => {
-      this.updateRealTime(queueItem.resolution, queueItem.realTimeCandle);
-    });
+  updatePendingBroadcastCandles(): Array<Candle|null> {
+    return (
+        this.emptyBroadcastQueue().map((queueItem: BroadcastQueue) => {
+          return this.updateRealTime(queueItem.resolution, queueItem.realTimeCandle);
+        })
+    );
   }
 }
