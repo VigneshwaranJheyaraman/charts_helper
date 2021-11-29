@@ -1,5 +1,5 @@
 ## [1.0.0] - 19 Nov 2021
-- Initial release
+- Initial re:lease
 - Basic configuration API's added
 - Testing [unit testing] done
 ## [1.0.1] - 23 Nov 2021
@@ -23,3 +23,6 @@
 - MarketManager daily ticks goBackNumberOfTicks updated with logic to check for previous day if the date is market day and go back
 - Range manger update for getRange logic to update fromDate as always to null
 - RangeManager generateRequestRange extra param added isFirstRequest to initialize the range for resolution
+## [1.0.3] - 29 Nov 2021
+- changes with respect to updatePendingBroadcastCandles function which will return an array of candles instead of void
+- updateRealTime extra optional param added ticker to validate the ticker and not push mismatch data based on ticker

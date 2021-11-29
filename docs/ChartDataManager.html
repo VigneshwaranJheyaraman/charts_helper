@@ -807,7 +807,7 @@ we trying to fetch the intial data from API and empties the queue.</p>
         <p class="tag-source">
             <a href="main_chart-data-manager.ts.html" class="button">View Source</a>
             <span>
-                <a href="main_chart-data-manager.ts.html">main/chart-data-manager.ts</a>, <a href="main_chart-data-manager.ts.html#line140">line 140</a>
+                <a href="main_chart-data-manager.ts.html">main/chart-data-manager.ts</a>, <a href="main_chart-data-manager.ts.html#line143">line 143</a>
             </span>
         </p>
     
@@ -1466,7 +1466,7 @@ which will initially fill up the visible range on charts</p>
         
         <span class="code-name">
             
-                updatePendingBroadcastCandles<span class="signature">()</span><span class="type-signature"></span>
+                updatePendingBroadcastCandles<span class="signature">()</span><span class="type-signature"> &rarr; {Array.&lt;<a href="Candle.html">Candle</a>>}</span>
             
         </span>
     </h4>
@@ -1527,7 +1527,7 @@ active symbol selected and empties the queue</p>
         <p class="tag-source">
             <a href="main_chart-data-manager.ts.html" class="button">View Source</a>
             <span>
-                <a href="main_chart-data-manager.ts.html">main/chart-data-manager.ts</a>, <a href="main_chart-data-manager.ts.html#line150">line 150</a>
+                <a href="main_chart-data-manager.ts.html">main/chart-data-manager.ts</a>, <a href="main_chart-data-manager.ts.html#line153">line 153</a>
             </span>
         </p>
     
@@ -1550,6 +1550,29 @@ active symbol selected and empties the queue</p>
 
 
 
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<span class="param-type">Array.&lt;<a href="Candle.html">Candle</a>></span>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
 
 
 
@@ -1568,7 +1591,7 @@ active symbol selected and empties the queue</p>
         
         <span class="code-name">
             
-                updateRealTime<span class="signature">(resolution, realTimeBroadcastCandle)</span><span class="type-signature"> &rarr; {<a href="Candle.html">Candle</a>|null}</span>
+                updateRealTime<span class="signature">(resolution, realTimeBroadcastCandle, ticker<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="Candle.html">Candle</a>|null}</span>
             
         </span>
     </h4>
@@ -1603,7 +1626,11 @@ manipulate the OHLCV values</p>
             <th>Type</th>
 
             
+            <th>Attributes</th>
+            
 
+            
+            <th>Default</th>
             
 
             <th class="last">Description</th>
@@ -1629,7 +1656,19 @@ manipulate the OHLCV values</p>
   </td>
 
   
+      <td class="attributes">
+      
 
+      
+
+      
+      </td>
+  
+
+  
+      <td class="default">
+      
+      </td>
   
 
   <td class="description last"><p>The resolution which is currently active on chart</p></td>
@@ -1654,10 +1693,63 @@ manipulate the OHLCV values</p>
   </td>
 
   
+      <td class="attributes">
+      
 
+      
+
+      
+      </td>
+  
+
+  
+      <td class="default">
+      
+      </td>
   
 
   <td class="description last"><p>The broadcast candle with only Close/LTP and the Full-Traded-Volume is enough also will accept other properties like Open, High and Low</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>ticker</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+          &lt;optional><br>
+      
+
+      
+
+      
+      </td>
+  
+
+  
+      <td class="default">
+      
+          ''
+      
+      </td>
+  
+
+  <td class="description last"><p>[optional] the ticker of the active symbol</p></td>
 </tr>
 
 
