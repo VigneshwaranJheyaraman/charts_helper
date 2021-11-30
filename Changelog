@@ -34,3 +34,4 @@
 - Trading-View-Utils added convertTradingViewCandleToCandle
 - index.js added with respective exports
 - Chart-IQ-utils related update on updateBroadcastCandlesOnChartIQ removeed the stx param sent inside updateChartData function
+- Changes wiith respect to stream logic which will handle low and high calculation mistake

@@ -277,12 +277,10 @@ export default class BroadcastHandler
       broadCastCandle.open =
         broadCastCandle.open || (realTimeCandle.open ?? realTimeCandle.close);
       broadCastCandle.low = Math.min(
-        Infinity,
-        broadCastCandle.low,
+        broadCastCandle.low || Infinity,
         realTimeCandle.low ?? realTimeCandle.close
       );
       broadCastCandle.high = Math.max(
-        0,
         broadCastCandle.high,
         realTimeCandle.high ?? realTimeCandle.close
       );
