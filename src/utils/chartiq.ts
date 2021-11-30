@@ -34,7 +34,7 @@ export function updateBroadcastCandleWithRealTimeChartUpdates(
   stx: any,
   broadCastCandle: ChartIQCandle
 ): void {
-  stx.updateChartData(broadCastCandle, stx, {
+  stx.updateChartData(broadCastCandle, null, {
     bypassGovernor: true,
   });
 }

@@ -1,6 +1,6 @@
 {
     "name": "@msf/msf-charts-helper",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "Chart's helper for both Chart-IQ and Trading View - MSIL implementation",
     "repository": {
         "url": "https://MSF-Services@dev.azure.com/MSF-Services/React-Development/_git/charts-helper"
