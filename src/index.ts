@@ -7,6 +7,7 @@ import {
   getHolidaysStringFromMarketRules,
   TradingViewCandle,
   convertCandleToTradingViewCandle,
+  convertTradingViewCandleToCandle,
 } from "./utils/trading-view";
 import {
   saveLayout,
@@ -16,6 +17,7 @@ import {
   changeSymbol,
   convertTimeFrameToSpanForChartIQ,
   convertPeriodAndIntervalToResolution,
+  convertChartIQCandleToCandle,
 } from "./utils/chartiq";
 import { updateURLState, convertObjectToURLString } from "./utils/url";
 import {
@@ -34,6 +36,7 @@ export {
   getHolidaySessionFromMarketRules,
   TradingViewCandle,
   convertCandleToTradingViewCandle,
+  convertTradingViewCandleToCandle,
 };
 //Chartiq utils export
 export {
@@ -44,6 +47,7 @@ export {
   changeSymbol,
   convertTimeFrameToSpanForChartIQ,
   convertPeriodAndIntervalToResolution,
+  convertChartIQCandleToCandle,
 };
 //URL's related utilities
 export { updateURLState, convertObjectToURLString };

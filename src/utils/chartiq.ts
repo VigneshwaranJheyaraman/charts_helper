@@ -169,6 +169,7 @@ export function convertTimeFrameToSpanForChartIQ(timeFrame: string): object {
   }
 }
 /**
+ * @category Chart-IQ-Utils
  * @member convertPeriodAndIntervalToResolution
  * @description Acts like the Resolution Factory for Chart-IQ implementation returning the resolution
  * @param {any} stx - Chart Engine's object
@@ -188,4 +189,23 @@ export function convertPeriodAndIntervalToResolution(stx: any): string {
     }
   }
   return "";
+}
+/**
+ * @category Chart-IQ-Utils
+ * @method convertChartIQCandleToCandle
+ * @description Convert a regular Chart-IQ Candle to basic Candle object
+ * @param {ChartIQCandle} chartIQCandle - ChartIQ candle to convert
+ * @returns {Candle}
+*/
+export function convertChartIQCandleToCandle(chartIQCandle: ChartIQCandle): Candle {
+  return (
+    {
+      date: chartIQCandle.DT || null,
+      close: chartIQCandle.Close || 0,
+      open: chartIQCandle.Open || 0,
+      low: chartIQCandle.Low || 0,
+      high: chartIQCandle.High || 0,
+      volume: chartIQCandle.Volume || 0
+    }
+  );
 }

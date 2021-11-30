@@ -78,9 +78,9 @@ export default class BroadcastHandler
   /**
    * The broadcast candle which is used internally by the handler to perform streaming related calculations
    * @private
-   * @property {BroadcastHandlerCandle} __broacastCandle
+   * @property {BroadcastHandlerCandle} __broadcastCandle
    */
-  private __broacastCandle: BroadcastHandlerCandle;
+  private __broadcastCandle: BroadcastHandlerCandle;
   /**
    * The active symbol on chart, which will be updated from subscription
    * @private
@@ -95,7 +95,7 @@ export default class BroadcastHandler
   private __marketManager: MarketManager | null = null;
   constructor(props: undefined = undefined) {
     super(props);
-    this.__broacastCandle = Object.assign({}, EMPTY_CANDLE);
+    this.__broadcastCandle = Object.assign({}, EMPTY_CANDLE);
 
     this.stream = this.stream.bind(this);
     this.__nullify = this.__nullify.bind(this);
@@ -139,7 +139,13 @@ export default class BroadcastHandler
    */
   init(lastCandle: Candle | undefined): void {
     if (lastCandle) {
-      this.__broacastCandle = { ...lastCandle };
+      this.__broadcastCandle.date = lastCandle.date;
+      this.__broadcastCandle.open = lastCandle.open;
+      this.__broadcastCandle.close = lastCandle.close;
+      this.__broadcastCandle.high = lastCandle.high;
+      this.__broadcastCandle.low = lastCandle.low;
+      this.__broadcastCandle.volume = lastCandle.volume || 0;
+      this.__broadcastCandle.oldVolume = this.__broadcastCandle.volume;
     }
   }
   /**
@@ -148,7 +154,7 @@ export default class BroadcastHandler
    * @member {Candle} broadCastCandle
    */
   get broadcastCandle(): Candle {
-    return Object.assign({}, this.__broacastCandle);
+    return Object.assign({}, this.__broadcastCandle);
   }
   /**
    * @method stream
@@ -173,6 +179,7 @@ export default class BroadcastHandler
         ),
         resolution
       );
+      broadCastCandle = this.broadcastCandle;
       if (checkIsDailyTicks(resolution)) {
         //daily candles
         newVolume = realTimeCandle.volume ?? 0;
@@ -194,8 +201,11 @@ export default class BroadcastHandler
       );
       broadCastCandle.volume = newVolume;
       broadCastCandle.oldVolume = realTimeCandle.volume || 0;
-      this.__broacastCandle = Object.assign({}, broadCastCandle);
-      return Object.assign({}, broadCastCandle);
+      if(!!broadCastCandle.date) {
+          this.__broadcastCandle = Object.assign({}, broadCastCandle);
+          return Object.assign({}, broadCastCandle);
+      }
+      return null;
     }
     return null;
   }
@@ -204,7 +214,7 @@ export default class BroadcastHandler
    * @private
    */
   private __nullify(): void {
-    this.__broacastCandle = Object.assign({}, EMPTY_CANDLE);
+    this.__broadcastCandle = Object.assign({}, EMPTY_CANDLE);
   }
   /**
    * @method updateLastCandleTime
@@ -221,7 +231,7 @@ export default class BroadcastHandler
         : newCandleTime.getTime() !== this.broadcastCandle.date?.getTime();
       if (checkIfTimeIsDifferent) {
         this.__nullify();
-        this.__broacastCandle.date = new Date(newCandleTime);
+        this.__broadcastCandle.date = new Date(newCandleTime);
       }
     }
   }

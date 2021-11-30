@@ -92,7 +92,7 @@ export function findLastCandleTime(
   lastCandleTime = new Date(lastCandleTime);
   let normalizedTime: Date = normalizeMinutes(broadCastCandleTime, resolution);
   if (checkIsDailyTicks(resolution)) {
-    return new Date(lastCandleTime.setHours(5, 30, 0, 0));
+    return new Date((lastCandleTime.getTime() < broadCastCandleTime.getTime() ? broadCastCandleTime : lastCandleTime).setHours(5, 30, 0, 0));
   } else {
     if (broadCastCandleTime.toDateString() === lastCandleTime.toDateString()) {
       let res: number = parseInt(resolution, 10),

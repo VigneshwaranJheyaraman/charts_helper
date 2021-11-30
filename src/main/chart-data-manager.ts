@@ -124,9 +124,9 @@ export default class ChartDataManager
   private __resolutionFactory: ResolutionFactory;
   constructor(props: DataManagerProps) {
     super(props);
-    this.__activeSymbol = new ChartSymbol(props.symbol);
-    this.__apiRequestor = new ApiRequestor(props.api);
     this.__broadcastHandler = new BroadcastHandler();
+    this.__apiRequestor = new ApiRequestor(props.api);
+    this.__activeSymbol = new ChartSymbol(props.symbol);
     this.__deviceInterface = new DeviceInterface(props.deviceInterface);
     this.__resolutionFactory = props.resolutionFactory;
     this.__isStreaming = false;

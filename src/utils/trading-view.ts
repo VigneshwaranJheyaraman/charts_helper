@@ -90,3 +90,22 @@ export function convertCandleToTradingViewCandle(
     volume: candle.volume,
   };
 }
+/**
+ * @category Trading-View-Utils
+ * @method convertTradingViewCandleToCandle
+ * @description Converts Trading-View's candle into basic Candle acceptable format
+ * @param {TradingViewCandle} candle - candle provide by Trading-View
+ * @returns {Candle}
+ */
+export function convertTradingViewCandleToCandle(
+  candle: TradingViewCandle
+): Candle {
+  return {
+    date: candle.time ? new Date(candle.time) : null,
+    open: candle.open || 0,
+    close: candle.close || 0,
+    high: candle.high || 0,
+    low: candle.low || 0,
+    volume: candle.volume || 0,
+  };
+}
